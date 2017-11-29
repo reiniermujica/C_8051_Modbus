@@ -1,0 +1,85 @@
+<aoffile FileName="U2">
+   <modulelist>
+      <module Name="MAIN" Origin="OBJ(F:\REINIER\ESTUDIO\TESIS\PROTEUS\CAP03\C_CODE_SLAVE\MAIN.OBJ)">
+      <filelist>
+         <file FI="0001"  Time="00000000"  FName="F:\Reinier\Estudio\TESIS\PROTEUS\Cap03\C_Code_Slave\main.c"/>
+         <file FI="0002"  Time="00000000"  FName="C:\Program Files (x86)\Raisonance\Ride\Inc\stdio.h"/>
+         <file FI="0003"  Time="00000000"  FName="C:\Program Files (x86)\Raisonance\Ride\Inc\stdarg.h"/>
+         <file FI="0004"  Time="00000000"  FName="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h"/>
+         <file FI="0005"  Time="00000000"  FName="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h"/>
+         <file FI="0006"  Time="00000000"  FName="main.h"/>
+         <file FI="0007"  Time="00000000"  FName="C:\Program Files (x86)\Raisonance\Ride\Inc\51\reg52.h"/>
+         <file FI="0008"  Time="00000000"  FName="modbus.h"/>
+         <file FI="0009"  Time="00000000"  FName="slave.h"/>
+         <file FI="000a"  Time="00000000"  FName="ascii.h"/>
+         <file FI="000b"  Time="00000000"  FName="C:\Program Files (x86)\Raisonance\Ride\Inc\51\reg52.h"/>
+         <file FI="000c"  Time="00000000"  FName="F:\Reinier\Estudio\TESIS\PROTEUS\Cap03\C_Code_Slave\main.lst"/>
+      </filelist>
+      <macrolist>
+         <macro Name="ASCII_FRAME_SIZE" ArgNum="00" ProtoName="ASCII_FRAME_SIZE" Equivalency="60" DeclFile="modbus.h" DeclLine="5" />
+         <macro Name="MMOD" ArgNum="00" ProtoName="MMOD" Equivalency="1009" DeclFile="F:\Reinier\Estudio\TESIS\PROTEUS\Cap03\C_Code_Slave\main.c" DeclLine="6" />
+         <macro Name="__SMALL" ArgNum="00" ProtoName="__SMALL" Equivalency="1" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="26" />
+         <macro Name="LOCAL_GENERIC" ArgNum="00" ProtoName="LOCAL_GENERIC" Equivalency="generic" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="20" />
+         <macro Name="MAX_INPUTS" ArgNum="00" ProtoName="MAX_INPUTS" Equivalency="1" DeclFile="slave.h" DeclLine="11" />
+         <macro Name="NULL" ArgNum="00" ProtoName="NULL" Equivalency="0L" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\stdarg.h" DeclLine="27" />
+         <macro Name="_SIZE_T" ArgNum="00" ProtoName="_SIZE_T" Equivalency="" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="75" />
+         <macro Name="va_arg" ArgNum="02" ProtoName="va_arg(ap, t)" Equivalency="( * ( t __Stack_Space__ * ) ( ( ap -= sizeof ( t ) ) + 1 ) )" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="91" />
+         <macro Name="_VA_LIST_DEFINED" ArgNum="00" ProtoName="_VA_LIST_DEFINED" Equivalency="" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\stdarg.h" DeclLine="51" />
+         <macro Name="CR" ArgNum="00" ProtoName="CR" Equivalency="0x0D" DeclFile="modbus.h" DeclLine="8" />
+         <macro Name="DISPLAY_ON" ArgNum="00" ProtoName="DISPLAY_ON" Equivalency="0" DeclFile="main.h" DeclLine="20" />
+         <macro Name="_MEMORY_MODELS" ArgNum="00" ProtoName="_MEMORY_MODELS" Equivalency="" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="24" />
+         <macro Name="va_start" ArgNum="02" ProtoName="va_start(ap, v)" Equivalency="ap = ( va_list ) ( __SP__ - __STARTPOS__ )" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="90" />
+         <macro Name="va_end" ArgNum="01" ProtoName="va_end(ap)" Equivalency="( ( void ) 0 )" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\stdarg.h" DeclLine="54" />
+         <macro Name="__TINY" ArgNum="00" ProtoName="__TINY" Equivalency="0" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="25" />
+         <macro Name="DISPLAY_OFF" ArgNum="00" ProtoName="DISPLAY_OFF" Equivalency="1" DeclFile="main.h" DeclLine="21" />
+         <macro Name="EOF" ArgNum="00" ProtoName="EOF" Equivalency="- 1" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\stdio.h" DeclLine="32" />
+         <macro Name="MAX_HOLDING_REGISTERS" ArgNum="00" ProtoName="MAX_HOLDING_REGISTERS" Equivalency="2" DeclFile="slave.h" DeclLine="12" />
+         <macro Name="__LARGE" ArgNum="00" ProtoName="__LARGE" Equivalency="4" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="29" />
+         <macro Name="__MEDIUM" ArgNum="00" ProtoName="__MEDIUM" Equivalency="3" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="28" />
+         <macro Name="__COMPACT" ArgNum="00" ProtoName="__COMPACT" Equivalency="2" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="27" />
+         <macro Name="LF" ArgNum="00" ProtoName="LF" Equivalency="0x0A" DeclFile="modbus.h" DeclLine="9" />
+         <macro Name="__Stack_Space__" ArgNum="00" ProtoName="__Stack_Space__" Equivalency="idata" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="88" />
+         <macro Name="_STDARG_H_" ArgNum="00" ProtoName="_STDARG_H_" Equivalency="" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\stdarg.h" DeclLine="22" />
+      </macrolist>
+      <macrolist>
+         <macro Name="MAX_COILS" ArgNum="00" ProtoName="MAX_COILS" Equivalency="1" DeclFile="slave.h" DeclLine="10" />
+         <macro Name="_STDIO_H_" ArgNum="00" ProtoName="_STDIO_H_" Equivalency="" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\stdio.h" DeclLine="21" />
+         <macro Name="DIR" ArgNum="00" ProtoName="DIR" Equivalency="0x05" DeclFile="slave.h" DeclLine="2" />
+         <macro Name="MAX_INPUTS_REGISTERS" ArgNum="00" ProtoName="MAX_INPUTS_REGISTERS" Equivalency="2" DeclFile="slave.h" DeclLine="13" />
+         <macro Name="TIMER_HIGHT_0" ArgNum="00" ProtoName="TIMER_HIGHT_0" Equivalency="0xF7" DeclFile="main.h" DeclLine="16" />
+         <macro Name="TIMER_HIGHT_1" ArgNum="00" ProtoName="TIMER_HIGHT_1" Equivalency="0xF4" DeclFile="main.h" DeclLine="12" />
+         <macro Name="__HUGE" ArgNum="00" ProtoName="__HUGE" Equivalency="5" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="30" />
+         <macro Name="TIMER_LOW_0" ArgNum="00" ProtoName="TIMER_LOW_0" Equivalency="0x86" DeclFile="main.h" DeclLine="17" />
+         <macro Name="TIMER_LOW_1" ArgNum="00" ProtoName="TIMER_LOW_1" Equivalency="0xF4" DeclFile="main.h" DeclLine="13" />
+      </macrolist>
+      <typelist>
+         <type TI="0x0" Family="Function" String="void ()" ReturnTI="0xb" ParamTI="0x0"/>
+      </typelist>
+      <typelist>
+         <type TI="0x1" Family="Function" String="void ()" ReturnTI="0xb" ParamTI="0x0"/>
+      </typelist>
+      <typelist>
+         <type TI="0x2" Family="Function" String="unsigned char ()" ReturnTI="0x3" ParamTI="0x0"/>
+      </typelist>
+      <typelist>
+         <type TI="0x3" Family="Array" String="unsigned [20]" Dim="1" Attrib="1636304" ObjectTI="0x5"  Max0= "20"/>
+      </typelist>
+      </module>
+      <module Name="C1S" Origin="LIB(C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB)">
+      </module>
+      <module Name="MULS" Origin="LIB(C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB)">
+      </module>
+      <module Name="DIVS" Origin="LIB(C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB)">
+      </module>
+      <module Name="CMPL" Origin="LIB(C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB)">
+      </module>
+      <module Name="RSTSTK4" Origin="LIB(C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB)">
+      </module>
+      <module Name="HPD" Origin="LIB(C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB)">
+      </module>
+      <module Name="_C_INITD" Origin="LIB(C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB)">
+      </module>
+      <module Name="_C_IDATALEN" Origin="LIB(C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB)">
+      </module>
+   </modulelist>
+</aoffile>

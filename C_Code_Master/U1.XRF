@@ -1,0 +1,52 @@
+MS-DOS LX51 CODE BANKING LINKER/LOCATOR V05.08.10.309
+
+
+INTER-MODULE CROSS-REFERENCE LISTING
+------------------------------------
+
+          NAME. . . . . . . . USAGE   MODULE NAMES
+          ----------------------------------------
+          ?C_START3 . . . . . CODE    [C3S]:  MAIN
+          ascii . . . . . . . DATA    [MAIN]: 
+          AsciiToTwoByte  . . CODE    [MAIN]: 
+          ascii_frame . . . . IDATA   [MAIN]: 
+          broadcast . . . . . BIT     [MAIN]: 
+          byte_count  . . . . DATA    [MAIN]: 
+          clear_frame . . . . CODE    [MAIN]: 
+          coil  . . . . . . . DATA    [MAIN]: 
+          data_count  . . . . IDATA   [MAIN]: 
+          gen_lrc . . . . . . CODE    [MAIN]: 
+          gen_start . . . . . CODE    [MAIN]: 
+          hexa  . . . . . . . DATA    [MAIN]: 
+          HPD_ADDR  . . . . . DATA    [HPD]:  C3S
+          i . . . . . . . . . DATA    [MAIN]: 
+          IDATALEN  . . . . . NUMBER  [_C_IDATALEN]:  C3S
+          lrc_calc  . . . . . CODE    [MAIN]:  MAIN
+          main  . . . . . . . CODE    [MAIN]:  C3S
+          parameters  . . . . IDATA   [MAIN]: 
+          send_count  . . . . IDATA   [MAIN]: 
+          SerialPortInt . . . CODE    [MAIN]: 
+          Serial_Init . . . . CODE    [MAIN]: 
+          TIM1_INIT . . . . . NUMBER  [** UNRESOLVED **]:
+          tx_assci_frame  . . CODE    [MAIN]: 
+          word  . . . . . . . DATA    [MAIN]: 
+          XSTACKLEN . . . . . NUMBER  [** UNRESOLVED **]:
+          _AsciiToByte  . . . CODE    [MAIN]: 
+          _ByteToAscii  . . . CODE    [MAIN]: 
+          _delay_ms . . . . . CODE    [MAIN]: 
+          _ForceMultipleCoils_CODE    [MAIN]: 
+          _ForceSingleCoil_05 CODE    [MAIN]: 
+          _gen_dir  . . . . . CODE    [MAIN]: 
+          _gen_function . . . CODE    [MAIN]: 
+          _INITP2?  . . . . . NUMBER  [_C_IDATALEN]:  C3S
+          _NibbleToAscii  . . CODE    [MAIN]: 
+          _PresetMultipleRegisCODE    [MAIN]: 
+          _PresetSingleRegisteCODE    [MAIN]: 
+          _ReadCoilStatus_01  CODE    [MAIN]: 
+          _ReadHoldingRegisterCODE    [MAIN]: 
+          _ReadInputRegisters_CODE    [MAIN]: 
+          _ReadInputStatus_02 CODE    [MAIN]: 
+          _STACK  . . . . . . IDATA   [MAIN]:  C3S
+          _TwoByteToAscii . . CODE    [MAIN]: 
+          _tx_byte  . . . . . CODE    [MAIN]: 
+          _tx_byte2 . . . . . CODE    [MAIN]: 

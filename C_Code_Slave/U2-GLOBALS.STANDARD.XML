@@ -1,0 +1,35 @@
+<aoffile Header="U2" Path="">
+ <Def>
+  <Col Header="DeclFile" Desc="File"/>
+  <Col Header="Type" Desc="Type"/>
+  <Col Header="Header" Desc="Name"/>
+ </Def>
+ <define Header="ASCII_FRAME_SIZE" Icon ="4" Type="define" Info=":   #define ASCII_FRAME_SIZE   60" Desc="#define ASCII_FRAME_SIZE   60" DeclFile="modbus.h" DeclLine="5"/>
+ <define Header="MMOD" Icon ="4" Type="define" Info=":   #define MMOD   1009" Desc="#define MMOD   1009" DeclFile="F:\Reinier\Estudio\TESIS\PROTEUS\Cap03\C_Code_Slave\main.c" DeclLine="6"/>
+ <define Header="__SMALL" Icon ="4" Type="define" Info=":   #define __SMALL   1" Desc="#define __SMALL   1" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="26"/>
+ <define Header="LOCAL_GENERIC" Icon ="4" Type="define" Info=":   #define LOCAL_GENERIC   generic" Desc="#define LOCAL_GENERIC   generic" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="20"/>
+ <define Header="MAX_INPUTS" Icon ="4" Type="define" Info=":   #define MAX_INPUTS   1" Desc="#define MAX_INPUTS   1" DeclFile="slave.h" DeclLine="11"/>
+ <define Header="NULL" Icon ="4" Type="define" Info=":   #define NULL   0L" Desc="#define NULL   0L" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\stdarg.h" DeclLine="27"/>
+ <define Header="va_arg" Icon ="4" Type="define" Info=":   #define va_arg(ap, t)   ( * ( t __Stack_Space__ * ) ( ( ap -= sizeof ( t ) ) + 1 ) )" Desc="#define va_arg(ap, t)   ( * ( t __Stack_Space__ * ) ( ( ap -= sizeof ( t ) ) + 1 ) )" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="91"/>
+ <define Header="CR" Icon ="4" Type="define" Info=":   #define CR   0x0D" Desc="#define CR   0x0D" DeclFile="modbus.h" DeclLine="8"/>
+ <define Header="DISPLAY_ON" Icon ="4" Type="define" Info=":   #define DISPLAY_ON   0" Desc="#define DISPLAY_ON   0" DeclFile="main.h" DeclLine="20"/>
+ <define Header="va_start" Icon ="4" Type="define" Info=":   #define va_start(ap, v)   ap = ( va_list ) ( __SP__ - __STARTPOS__ )" Desc="#define va_start(ap, v)   ap = ( va_list ) ( __SP__ - __STARTPOS__ )" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="90"/>
+ <define Header="va_end" Icon ="4" Type="define" Info=":   #define va_end(ap)   ( ( void ) 0 )" Desc="#define va_end(ap)   ( ( void ) 0 )" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\stdarg.h" DeclLine="54"/>
+ <define Header="__TINY" Icon ="4" Type="define" Info=":   #define __TINY   0" Desc="#define __TINY   0" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="25"/>
+ <define Header="DISPLAY_OFF" Icon ="4" Type="define" Info=":   #define DISPLAY_OFF   1" Desc="#define DISPLAY_OFF   1" DeclFile="main.h" DeclLine="21"/>
+ <define Header="EOF" Icon ="4" Type="define" Info=":   #define EOF   - 1" Desc="#define EOF   - 1" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\stdio.h" DeclLine="32"/>
+ <define Header="MAX_HOLDING_REGISTERS" Icon ="4" Type="define" Info=":   #define MAX_HOLDING_REGISTERS   2" Desc="#define MAX_HOLDING_REGISTERS   2" DeclFile="slave.h" DeclLine="12"/>
+ <define Header="__LARGE" Icon ="4" Type="define" Info=":   #define __LARGE   4" Desc="#define __LARGE   4" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="29"/>
+ <define Header="__MEDIUM" Icon ="4" Type="define" Info=":   #define __MEDIUM   3" Desc="#define __MEDIUM   3" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="28"/>
+ <define Header="__COMPACT" Icon ="4" Type="define" Info=":   #define __COMPACT   2" Desc="#define __COMPACT   2" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="27"/>
+ <define Header="LF" Icon ="4" Type="define" Info=":   #define LF   0x0A" Desc="#define LF   0x0A" DeclFile="modbus.h" DeclLine="9"/>
+ <define Header="__Stack_Space__" Icon ="4" Type="define" Info=":   #define __Stack_Space__   idata" Desc="#define __Stack_Space__   idata" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="88"/>
+ <define Header="MAX_COILS" Icon ="4" Type="define" Info=":   #define MAX_COILS   1" Desc="#define MAX_COILS   1" DeclFile="slave.h" DeclLine="10"/>
+ <define Header="DIR" Icon ="4" Type="define" Info=":   #define DIR   0x05" Desc="#define DIR   0x05" DeclFile="slave.h" DeclLine="2"/>
+ <define Header="MAX_INPUTS_REGISTERS" Icon ="4" Type="define" Info=":   #define MAX_INPUTS_REGISTERS   2" Desc="#define MAX_INPUTS_REGISTERS   2" DeclFile="slave.h" DeclLine="13"/>
+ <define Header="TIMER_HIGHT_0" Icon ="4" Type="define" Info=":   #define TIMER_HIGHT_0   0xF7" Desc="#define TIMER_HIGHT_0   0xF7" DeclFile="main.h" DeclLine="16"/>
+ <define Header="TIMER_HIGHT_1" Icon ="4" Type="define" Info=":   #define TIMER_HIGHT_1   0xF4" Desc="#define TIMER_HIGHT_1   0xF4" DeclFile="main.h" DeclLine="12"/>
+ <define Header="__HUGE" Icon ="4" Type="define" Info=":   #define __HUGE   5" Desc="#define __HUGE   5" DeclFile="C:\Program Files (x86)\Raisonance\Ride\Inc\51\MAIN_C51.h" DeclLine="30"/>
+ <define Header="TIMER_LOW_0" Icon ="4" Type="define" Info=":   #define TIMER_LOW_0   0x86" Desc="#define TIMER_LOW_0   0x86" DeclFile="main.h" DeclLine="17"/>
+ <define Header="TIMER_LOW_1" Icon ="4" Type="define" Info=":   #define TIMER_LOW_1   0xF4" Desc="#define TIMER_LOW_1   0xF4" DeclFile="main.h" DeclLine="13"/>
+</aoffile>

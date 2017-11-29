@@ -1,0 +1,787 @@
+LX51 CODE BANKING LINKER/LOCATOR V05.08.10.309                                 06/23/15  22:21:24
+MS-DOS LX51 CODE BANKING LINKER/LOCATOR V05.08.10.309,  INVOKED BY:
+C:\Program Files (x86)\Raisonance\Ride\Bin\LX51.EXE F:\Reinier\Estudio\TESIS\PROTEUS\Cap03\C_Code&
+_Master\main.obj TO(F:\Reinier\Estudio\TESIS\PROTEUS\Cap03\C_Code_Master\U1.aof) LIBPATH(C:\Progr&
+am Files (x86)\Raisonance\Ride\Lib\51) GENERATEDEPFILE MAP IX RS(256) RSI(128) CSIZE(65536) XSIZE&
+(65536) DEFN(XSTACKLEN,256) DEFN(TIM1_INIT,E8h) CO(0) DT(0) ID(0) XD(0) BI(0) ABSCODEOFFS(0) XMLM&
+(No,F:\Reinier\Estudio\TESIS\PROTEUS\Cap03\C_Code_Master\U1-modules.Standard.xml) XMLF(No,8000,F:&
+\Reinier\Estudio\TESIS\PROTEUS\Cap03\C_Code_Master\U1-flash.Standard.xml) XML(F:\Reinier\Estudio\&
+TESIS\PROTEUS\Cap03\C_Code_Master\U1.Standard.xml) XMLRIDE(F:\Reinier\Estudio\TESIS\PROTEUS\Cap03&
+\C_Code_Master\U1-globals.Standard.xml) 
+
+
+MEMORY MODEL: SMALL WITHOUT ANY FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED
+  F:\REINIER\ESTUDIO\TESIS\PROTEUS\CAP03\C_CODE_MASTER\MAIN.OBJ(MAIN)
+  C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB(C3S)
+  C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB(HPD)
+  C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB(_C_IDATALEN)
+
+
+LINK MAP OF MODULE: F:\REINIER\ESTUDIO\TESIS\PROTEUS\CAP03\C_CODE_MASTER\U1.AOF (U1)
+
+    TYPE     BASE       LENGTH    RELOCATION     SEGMENT NAME
+    ----     ----       ------    ----------     ------------
+
+    * * * * * * *   DATA/IDATA    M E M O R Y   * * * * * * *
+    REG      0000H      0008H     ABSOLUTE       "REG BANK 0"
+    DATA     0008H      000FH     UNIT           ?DT?MAIN
+    DATA     0017H      0007H     OVERLAID UNIT  _DGROUP07_
+             0017H      0006H     -------------  ?DT?_ForceMultipleCoils_15?MAIN
+             001DH      0001H     -------------  ?DT?lrc_calc?MAIN
+             001EH      0002H                    *** GAP ***
+    BIT      0020H.0    0000H.1   UNIT           ?BI?MAIN
+             0020H.1    0000H.7                  *** GAP ***
+    DATA     0021H      0006H     OVERLAID UNIT  _DGROUP00_
+             0021H      0006H     -------------  ?DT?AsciiToTwoByte?MAIN
+    DATA     0027H      0006H     OVERLAID UNIT  _DGROUP08_
+             0027H      0006H     -------------  ?DT?_PresetMultipleRegisters_16?MAIN
+    DATA     002DH      0004H     OVERLAID UNIT  _DGROUP02_
+             002DH      0004H     -------------  ?DT?_ReadCoilStatus_01?MAIN
+    DATA     0031H      0004H     OVERLAID UNIT  _DGROUP03_
+             0031H      0004H     -------------  ?DT?_ReadInputStatus_02?MAIN
+    DATA     0035H      0004H     OVERLAID UNIT  _DGROUP04_
+             0035H      0004H     -------------  ?DT?_ReadHoldingRegisters_03?MAIN
+    DATA     0039H      0004H     OVERLAID UNIT  _DGROUP05_
+             0039H      0004H     -------------  ?DT?_ReadInputRegisters_04?MAIN
+    DATA     003DH      0004H     OVERLAID UNIT  _DGROUP10_
+             003DH      0004H     -------------  ?DT?_delay_ms?MAIN
+    DATA     0041H      0004H     OVERLAID UNIT  _DGROUP11_
+             0041H      0004H     -------------  ?DT?_PresetSingleRegister_06?MAIN
+    DATA     0045H      0003H     OVERLAID UNIT  _DGROUP06_
+             0045H      0003H     -------------  ?DT?_ForceSingleCoil_05?MAIN
+    IDATA    0048H      0052H     UNIT           ?ID?MAIN
+    IDATA    009AH      0001H     * * STACK * *  _STACK
+
+    * * * * * * *   CODE          M E M O R Y   * * * * * * *
+    CODE     0000H      0003H     ABSOLUTE       
+    CODE     0003H      000FH     UNIT           ?PR?C51_STARTUP?
+    CODE     0012H      0010H     UNIT           ?PR?_NibbleToAscii?MAIN
+             0022H      0001H                    *** GAP ***
+    CODE     0023H      0003H     ABSOLUTE       
+    CODE     0026H      002FH     UNIT           ?PR?_ByteToAscii?MAIN
+    CODE     0055H      0027H     UNIT           ?PR?_AsciiToByte?MAIN
+    CODE     007CH      004DH     UNIT           ?PR?_TwoByteToAscii?MAIN
+    CODE     00C9H      0024H     UNIT           ?PR?AsciiToTwoByte?MAIN
+    CODE     00EDH      0005H     UNIT           ?PR?gen_start?MAIN
+    CODE     00F2H      000CH     UNIT           ?PR?_gen_dir?MAIN
+    CODE     00FEH      000CH     UNIT           ?PR?_gen_function?MAIN
+    CODE     010AH      0025H     UNIT           ?PR?gen_lrc?MAIN
+    CODE     012FH      0012H     UNIT           ?PR?clear_frame?MAIN
+    CODE     0141H      0014H     UNIT           ?PR?tx_assci_frame?MAIN
+    CODE     0155H      002FH     UNIT           ?PR?lrc_calc?MAIN
+    CODE     0184H      000AH     UNIT           ?PR?_tx_byte2?MAIN
+    CODE     018EH      0069H     UNIT           ?PR?_ReadCoilStatus_01?MAIN
+    CODE     01F7H      0069H     UNIT           ?PR?_ReadInputStatus_02?MAIN
+    CODE     0260H      0069H     UNIT           ?PR?_ReadHoldingRegisters_03?MAIN
+    CODE     02C9H      0069H     UNIT           ?PR?_ReadInputRegisters_04?MAIN
+    CODE     0332H      0077H     UNIT           ?PR?_ForceSingleCoil_05?MAIN
+    CODE     03A9H      0069H     UNIT           ?PR?_PresetSingleRegister_06?MAIN
+    CODE     0412H      00B8H     UNIT           ?PR?_ForceMultipleCoils_15?MAIN
+    CODE     04CAH      00CBH     UNIT           ?PR?_PresetMultipleRegisters_16?MAIN
+    CODE     0595H      0013H     UNIT           ?PR?Serial_Init?MAIN
+    CODE     05A8H      0028H     UNIT           ?PR?_delay_ms?MAIN
+    CODE     05D0H      000AH     UNIT           ?PR?_tx_byte?MAIN
+    CODE     05DAH      004FH     UNIT           ?PR?SerialPortInt?MAIN
+    CODE     0629H      0067H     UNIT           ?PR?main?MAIN
+
+EXECUTABLE SUMMARY:
+-------------------
+    Total INTERNAL RAM storage requirement:  0097H.1 (151.1)
+    Total EXTERNAL RAM storage requirement:  0000H (0)
+    Total     CODE     storage requirement:  068FH (1679)
+Note:  Summary does not include dynamic stack requirements
+
+
+REFERENCE MAP OF MODULE: F:\REINIER\ESTUDIO\TESIS\PROTEUS\CAP03\C_CODE_MASTER\U1.AOF (U1)
+
+SEGMENT                           BI_GROUP            DT_GROUP             ID_GROUP             XD_GROUP
+  +--> CALLED SEGMENT          START    LENGTH     START    LENGTH     START    LENGTH     START    LENGTH
+--------------------------------------------------------------------------------------
+
+?PR?AsciiToTwoByte?MAIN        ---------------     0021H    0006H      ---------------     ---------------
+  +--> ?PR?_AsciiToByte?MAIN
+
+?PR?_AsciiToByte?MAIN          ---------------     ---------------     ---------------     ---------------
+
+?PR?_tx_byte2?MAIN             ---------------     ---------------     ---------------     ---------------
+
+?PR?_ReadCoilStatus_01?MAIN    ---------------     002DH    0004H      ---------------     ---------------
+  +--> ?PR?gen_start?MAIN
+  +--> ?PR?_gen_dir?MAIN
+  +--> ?PR?_gen_function?MAIN
+  +--> ?PR?_TwoByteToAscii?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+
+?PR?gen_start?MAIN             ---------------     ---------------     ---------------     ---------------
+
+?PR?_gen_dir?MAIN              ---------------     ---------------     ---------------     ---------------
+  +--> ?PR?_ByteToAscii?MAIN
+
+?PR?_ByteToAscii?MAIN          ---------------     ---------------     ---------------     ---------------
+
+?PR?_gen_function?MAIN         ---------------     ---------------     ---------------     ---------------
+  +--> ?PR?_ByteToAscii?MAIN
+
+?PR?_TwoByteToAscii?MAIN       ---------------     ---------------     ---------------     ---------------
+  +--> ?PR?_NibbleToAscii?MAIN
+
+?PR?_NibbleToAscii?MAIN        ---------------     ---------------     ---------------     ---------------
+
+?PR?gen_lrc?MAIN               ---------------     ---------------     ---------------     ---------------
+  +--> ?PR?lrc_calc?MAIN
+  +--> ?PR?_ByteToAscii?MAIN
+
+?PR?lrc_calc?MAIN              ---------------     001DH    0001H     ---------------     ---------------
+  +--> ?PR?_AsciiToByte?MAIN
+
+?PR?tx_assci_frame?MAIN        ---------------     ---------------     ---------------     ---------------
+
+?PR?_ReadInputStatus_02?MAIN   ---------------     0031H    0004H      ---------------     ---------------
+  +--> ?PR?gen_start?MAIN
+  +--> ?PR?_gen_dir?MAIN
+  +--> ?PR?_gen_function?MAIN
+  +--> ?PR?_TwoByteToAscii?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+
+?PR?_ReadHoldingRegisters_03?MAIN---------------   0035H    0004H      ---------------     ---------------
+  +--> ?PR?gen_start?MAIN
+  +--> ?PR?_gen_dir?MAIN
+  +--> ?PR?_gen_function?MAIN
+  +--> ?PR?_TwoByteToAscii?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+
+?PR?_ReadInputRegisters_04?MAIN---------------     0039H    0004H      ---------------     ---------------
+  +--> ?PR?gen_start?MAIN
+  +--> ?PR?_gen_dir?MAIN
+  +--> ?PR?_gen_function?MAIN
+  +--> ?PR?_TwoByteToAscii?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+
+?PR?_ForceSingleCoil_05?MAIN   ---------------     0045H    0003H      ---------------     ---------------
+  +--> ?PR?gen_start?MAIN
+  +--> ?PR?_gen_dir?MAIN
+  +--> ?PR?_gen_function?MAIN
+  +--> ?PR?_TwoByteToAscii?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+
+?PR?_ForceMultipleCoils_15?MAIN---------------     0017H    0006H      ---------------     ---------------
+  +--> ?PR?gen_start?MAIN
+  +--> ?PR?_gen_dir?MAIN
+  +--> ?PR?_ByteToAscii?MAIN
+  +--> ?PR?_gen_function?MAIN
+  +--> ?PR?_TwoByteToAscii?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+
+?PR?_PresetMultipleRegisters_16?MAIN---------------0027H    0006H      ---------------     ---------------
+  +--> ?PR?gen_start?MAIN
+  +--> ?PR?_gen_dir?MAIN
+  +--> ?PR?_ByteToAscii?MAIN
+  +--> ?PR?_gen_function?MAIN
+  +--> ?PR?_TwoByteToAscii?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+
+?PR?_tx_byte?MAIN              ---------------     ---------------     ---------------     ---------------
+
+?PR?SerialPortInt?MAIN         ---------------     ---------------     ---------------     ---------------
+  +--> ?PR?_delay_ms?MAIN
+  +--> ?PR?clear_frame?MAIN
+
+?PR?_delay_ms?MAIN             ---------------     003DH    0004H     ---------------     ---------------
+
+?PR?clear_frame?MAIN           ---------------     ---------------     ---------------     ---------------
+
+?PR?main?MAIN                  ---------------     ---------------     ---------------     ---------------
+  +--> ?PR?Serial_Init?MAIN
+  +--> ?PR?_PresetSingleRegister_06?MAIN
+  +--> ?PR?_delay_ms?MAIN
+
+?PR?Serial_Init?MAIN           ---------------     ---------------     ---------------     ---------------
+
+?PR?_PresetSingleRegister_06?MAIN---------------     0041H    0004H     ---------------     ---------------
+  +--> ?PR?gen_start?MAIN
+  +--> ?PR?_gen_dir?MAIN
+  +--> ?PR?_gen_function?MAIN
+  +--> ?PR?_TwoByteToAscii?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+
+SYMBOL TABLE FOR F:\REINIER\ESTUDIO\TESIS\PROTEUS\CAP03\C_CODE_MASTER\U1.AOF(MAIN)
+-----------------------------------------------------------------------------------
+
+    VALUE              TYPE               NAME
+    -----              ----               ----
+
+	-------            MODULE             main
+	C:0000H            SYMBOL             _ICE_DUMMY_
+	C:0629H            PUBLIC             main
+	C:05DAH            PUBLIC             SerialPortInt
+	C:05D0H            PUBLIC             _tx_byte
+	C:0595H            PUBLIC             Serial_Init
+	D:0015H            PUBLIC             coil
+	D:0013H            PUBLIC             i
+	D:0011H            PUBLIC             word
+	C:0184H            PUBLIC             _tx_byte2
+	C:04CAH            PUBLIC             _PresetMultipleRegisters_16
+	C:0412H            PUBLIC             _ForceMultipleCoils_15
+	C:03A9H            PUBLIC             _PresetSingleRegister_06
+	C:0332H            PUBLIC             _ForceSingleCoil_05
+	C:02C9H            PUBLIC             _ReadInputRegisters_04
+	C:0260H            PUBLIC             _ReadHoldingRegisters_03
+	C:01F7H            PUBLIC             _ReadInputStatus_02
+	C:018EH            PUBLIC             _ReadCoilStatus_01
+	C:0141H            PUBLIC             tx_assci_frame
+	C:0155H            PUBLIC             lrc_calc
+	C:012FH            PUBLIC             clear_frame
+	C:010AH            PUBLIC             gen_lrc
+	C:00FEH            PUBLIC             _gen_function
+	C:00F2H            PUBLIC             _gen_dir
+	C:00EDH            PUBLIC             gen_start
+	D:0010H            PUBLIC             byte_count
+	I:0086H            PUBLIC             parameters
+	B:0000H            PUBLIC             broadcast
+	I:0085H            PUBLIC             send_count
+	I:0084H            PUBLIC             data_count
+	I:0048H            PUBLIC             ascii_frame
+	C:00C9H            PUBLIC             AsciiToTwoByte
+	C:007CH            PUBLIC             _TwoByteToAscii
+	C:0055H            PUBLIC             _AsciiToByte
+	C:0012H            PUBLIC             _NibbleToAscii
+	C:0026H            PUBLIC             _ByteToAscii
+	D:000CH            PUBLIC             hexa
+	D:0008H            PUBLIC             ascii
+	C:05A8H            PUBLIC             _delay_ms
+	B:00A7H            SYMBOL             RS485En
+	B:00C8H            SYMBOL             CP_RL2
+	B:00C9H            SYMBOL             C_T2
+	B:00CAH            SYMBOL             TR2
+	B:00CBH            SYMBOL             EXEN2
+	B:00CCH            SYMBOL             TCLK
+	B:00CDH            SYMBOL             RCLK
+	B:00CEH            SYMBOL             EXF2
+	B:00CFH            SYMBOL             TF2
+	B:0090H            SYMBOL             T2
+	B:0091H            SYMBOL             T2EX
+	B:00BDH            SYMBOL             PT2
+	B:00ADH            SYMBOL             ET2
+	B:0098H            SYMBOL             RI
+	B:0099H            SYMBOL             TI
+	B:009AH            SYMBOL             RB8
+	B:009BH            SYMBOL             TB8
+	B:009CH            SYMBOL             REN
+	B:009DH            SYMBOL             SM2
+	B:009EH            SYMBOL             SM1
+	B:009FH            SYMBOL             SM0
+	B:00B0H            SYMBOL             RXD
+	B:00B1H            SYMBOL             TXD
+	B:00B2H            SYMBOL             INT0
+	B:00B3H            SYMBOL             INT1
+	B:00B4H            SYMBOL             T0
+	B:00B5H            SYMBOL             T1
+	B:00B6H            SYMBOL             WR
+	B:00B7H            SYMBOL             RD
+	B:00B8H            SYMBOL             PX0
+	B:00B9H            SYMBOL             PT0
+	B:00BAH            SYMBOL             PX1
+	B:00BBH            SYMBOL             PT1
+	B:00BCH            SYMBOL             PS
+	B:00A8H            SYMBOL             EX0
+	B:00A9H            SYMBOL             ET0
+	B:00AAH            SYMBOL             EX1
+	B:00ABH            SYMBOL             ET1
+	B:00ACH            SYMBOL             ES
+	B:00AFH            SYMBOL             EA
+	B:0088H            SYMBOL             IT0
+	B:0089H            SYMBOL             IE0
+	B:008AH            SYMBOL             IT1
+	B:008BH            SYMBOL             IE1
+	B:008CH            SYMBOL             TR0
+	B:008DH            SYMBOL             TF0
+	B:008EH            SYMBOL             TR1
+	B:008FH            SYMBOL             TF1
+	B:00D0H            SYMBOL             P
+	B:00D1H            SYMBOL             F1
+	B:00D2H            SYMBOL             OV
+	B:00D3H            SYMBOL             RS0
+	B:00D4H            SYMBOL             RS1
+	B:00D5H            SYMBOL             F0
+	B:00D6H            SYMBOL             AC
+	B:00D7H            SYMBOL             CY
+	D:00CDH            SYMBOL             TH2
+	D:00CCH            SYMBOL             TL2
+	D:00CBH            SYMBOL             RCAP2H
+	D:00CAH            SYMBOL             RCAP2L
+	D:00C8H            SYMBOL             T2CON
+	D:0099H            SYMBOL             SBUF
+	D:0098H            SYMBOL             SCON
+	D:00B8H            SYMBOL             IP
+	D:00A8H            SYMBOL             IE
+	D:008DH            SYMBOL             TH1
+	D:008CH            SYMBOL             TH0
+	D:008BH            SYMBOL             TL1
+	D:008AH            SYMBOL             TL0
+	D:0089H            SYMBOL             TMOD
+	D:0088H            SYMBOL             TCON
+	D:0087H            SYMBOL             PCON
+	D:0083H            SYMBOL             DPH
+	D:0082H            SYMBOL             DPL
+	D:0081H            SYMBOL             SP
+	D:00F0H            SYMBOL             B
+	D:00E0H            SYMBOL             ACC
+	D:00D0H            SYMBOL             PSW
+	D:00B0H            SYMBOL             P3
+	D:00A0H            SYMBOL             P2
+	D:0090H            SYMBOL             P1
+	D:0080H            SYMBOL             P0
+	D:0081H            SYMBOL             __SP__
+	-------            PROC               _ByteToAscii
+	C:0026H            LINE#              17
+	C:0026H            LINE#              17
+	C:0026H            LINE#              19
+	C:002CH            LINE#              20
+	C:0030H            LINE#              22
+	C:0036H            LINE#              24
+	C:003DH            LINE#              28
+	C:0042H            LINE#              31
+	C:0049H            LINE#              33
+	C:004FH            LINE#              37
+	C:0054H            LINE#              40
+	C:0054H            LINE#              40
+	-------            ENDPROC            _ByteToAscii
+	-------            PROC               _NibbleToAscii
+	C:0012H            LINE#              42
+	C:0012H            LINE#              42
+	C:0012H            LINE#              44
+	C:0018H            LINE#              46
+	C:001CH            LINE#              52
+	C:001DH            LINE#              50
+	C:0021H            LINE#              52
+	C:0021H            LINE#              52
+	-------            ENDPROC            _NibbleToAscii
+	-------            PROC               _AsciiToByte
+	C:0055H            LINE#              54
+	C:0055H            LINE#              54
+	C:0055H            LINE#              56
+	C:005AH            LINE#              58
+	C:0060H            LINE#              62
+	C:0064H            LINE#              65
+	C:006AH            LINE#              67
+	C:0070H            LINE#              71
+	C:0074H            LINE#              74
+	C:007BH            LINE#              75
+	C:007BH            LINE#              75
+	-------            ENDPROC            _AsciiToByte
+	-------            PROC               _TwoByteToAscii
+	C:007CH            LINE#              77
+	C:007CH            LINE#              77
+	C:007CH            LINE#              80
+	C:0085H            LINE#              83
+	C:0088H            LINE#              84
+	C:0091H            LINE#              86
+	C:009BH            LINE#              87
+	C:00ACH            LINE#              88
+	C:00B3H            LINE#              91
+	C:00B5H            LINE#              92
+	C:00C4H            LINE#              91
+	C:00C8H            LINE#              95
+	C:00C8H            LINE#              95
+	-------            ENDPROC            _TwoByteToAscii
+	-------            PROC               AsciiToTwoByte
+	D:0002H            SYMBOL             a
+	D:0023H            SYMBOL             b
+	D:0025H            SYMBOL             result
+	C:00C9H            LINE#              97
+	C:00C9H            LINE#              97
+	C:00C9H            LINE#              99
+	C:00D2H            LINE#              100
+	C:00DEH            LINE#              102
+	C:00E8H            LINE#              104
+	C:00ECH            LINE#              105
+	C:00ECH            LINE#              105
+	-------            ENDPROC            AsciiToTwoByte
+	-------            PROC               gen_start
+	C:00EDH            LINE#              42
+	C:00EDH            LINE#              42
+	C:00EDH            LINE#              44
+	C:00F1H            LINE#              45
+	C:00F1H            LINE#              45
+	-------            ENDPROC            gen_start
+	-------            PROC               _gen_dir
+	C:00F2H            LINE#              47
+	C:00F2H            LINE#              47
+	C:00F2H            LINE#              49
+	C:00F5H            LINE#              50
+	C:00F9H            LINE#              51
+	C:00FDH            LINE#              52
+	C:00FDH            LINE#              52
+	-------            ENDPROC            _gen_dir
+	-------            PROC               _gen_function
+	C:00FEH            LINE#              54
+	C:00FEH            LINE#              54
+	C:00FEH            LINE#              56
+	C:0101H            LINE#              57
+	C:0105H            LINE#              58
+	C:0109H            LINE#              59
+	C:0109H            LINE#              59
+	-------            ENDPROC            _gen_function
+	-------            PROC               gen_lrc
+	C:010AH            LINE#              61
+	C:010AH            LINE#              61
+	C:010AH            LINE#              63
+	C:0110H            LINE#              64
+	C:0119H            LINE#              65
+	C:0120H            LINE#              67
+	C:0127H            LINE#              68
+	C:012EH            LINE#              69
+	C:012EH            LINE#              69
+	-------            ENDPROC            gen_lrc
+	-------            PROC               clear_frame
+	C:012FH            LINE#              71
+	C:012FH            LINE#              71
+	C:012FH            LINE#              74
+	C:0133H            LINE#              75
+	C:0137H            LINE#              76
+	C:0140H            LINE#              80
+	C:0140H            LINE#              80
+	-------            ENDPROC            clear_frame
+	-------            PROC               tx_assci_frame
+	C:0141H            LINE#              82
+	C:0141H            LINE#              82
+	C:0141H            LINE#              84
+	C:0143H            LINE#              86
+	C:0147H            LINE#              87
+	C:0149H            LINE#              88
+	C:014BH            LINE#              89
+	C:014FH            LINE#              90
+	C:0154H            LINE#              91
+	C:0154H            LINE#              91
+	-------            ENDPROC            tx_assci_frame
+	-------            PROC               lrc_calc
+	D:0013H            PUBLIC             i
+	C:0155H            LINE#              93
+	C:0155H            LINE#              93
+	C:0155H            LINE#              95
+	C:0157H            LINE#              97
+	C:0165H            LINE#              99
+	C:0179H            LINE#              97
+	C:017FH            LINE#              102
+	C:0181H            LINE#              103
+	C:0183H            LINE#              104
+	C:0183H            LINE#              104
+	-------            ENDPROC            lrc_calc
+	-------            PROC               _tx_byte2
+	C:0184H            LINE#              106
+	C:0184H            LINE#              106
+	C:0184H            LINE#              108
+	C:0186H            LINE#              109
+	C:0188H            LINE#              110
+	C:018AH            LINE#              111
+	C:018DH            LINE#              112
+	C:018DH            LINE#              112
+	-------            ENDPROC            _tx_byte2
+	-------            PROC               _ReadCoilStatus_01
+	D:002DH            SYMBOL             start
+	D:002FH            SYMBOL             cant
+	C:018EH            LINE#              115
+	C:018EH            LINE#              115
+	C:0196H            LINE#              119
+	C:0199H            LINE#              120
+	C:019CH            LINE#              121
+	C:01A1H            LINE#              122
+	C:01A5H            LINE#              124
+	C:01B2H            LINE#              125
+	C:01BAH            LINE#              127
+	C:01C7H            LINE#              125
+	C:01CEH            LINE#              130
+	C:01D5H            LINE#              131
+	C:01DDH            LINE#              133
+	C:01EAH            LINE#              131
+	C:01F1H            LINE#              135
+	C:01F4H            LINE#              137
+	C:01F4H            LINE#              138
+	-------            ENDPROC            _ReadCoilStatus_01
+	-------            PROC               _ReadInputStatus_02
+	D:0031H            SYMBOL             start
+	D:0033H            SYMBOL             cant
+	C:01F7H            LINE#              140
+	C:01F7H            LINE#              140
+	C:01FFH            LINE#              144
+	C:0202H            LINE#              145
+	C:0205H            LINE#              146
+	C:020AH            LINE#              147
+	C:020EH            LINE#              149
+	C:021BH            LINE#              150
+	C:0223H            LINE#              152
+	C:0230H            LINE#              150
+	C:0237H            LINE#              155
+	C:023EH            LINE#              156
+	C:0246H            LINE#              158
+	C:0253H            LINE#              156
+	C:025AH            LINE#              160
+	C:025DH            LINE#              162
+	C:025DH            LINE#              163
+	-------            ENDPROC            _ReadInputStatus_02
+	-------            PROC               _ReadHoldingRegisters_03
+	D:0035H            SYMBOL             start
+	D:0037H            SYMBOL             cant
+	C:0260H            LINE#              166
+	C:0260H            LINE#              166
+	C:0268H            LINE#              170
+	C:026BH            LINE#              171
+	C:026EH            LINE#              172
+	C:0273H            LINE#              173
+	C:0277H            LINE#              175
+	C:0284H            LINE#              176
+	C:028CH            LINE#              178
+	C:0299H            LINE#              176
+	C:02A0H            LINE#              181
+	C:02A7H            LINE#              182
+	C:02AFH            LINE#              184
+	C:02BCH            LINE#              182
+	C:02C3H            LINE#              186
+	C:02C6H            LINE#              188
+	C:02C6H            LINE#              189
+	-------            ENDPROC            _ReadHoldingRegisters_03
+	-------            PROC               _ReadInputRegisters_04
+	D:0039H            SYMBOL             start
+	D:003BH            SYMBOL             cant
+	C:02C9H            LINE#              192
+	C:02C9H            LINE#              192
+	C:02D1H            LINE#              196
+	C:02D4H            LINE#              197
+	C:02D7H            LINE#              198
+	C:02DCH            LINE#              199
+	C:02E0H            LINE#              201
+	C:02EDH            LINE#              202
+	C:02F5H            LINE#              204
+	C:0302H            LINE#              202
+	C:0309H            LINE#              207
+	C:0310H            LINE#              208
+	C:0318H            LINE#              210
+	C:0325H            LINE#              208
+	C:032CH            LINE#              212
+	C:032FH            LINE#              214
+	C:032FH            LINE#              215
+	-------            ENDPROC            _ReadInputRegisters_04
+	-------            PROC               _ForceSingleCoil_05
+	D:0045H            SYMBOL             coilID
+	D:0047H            SYMBOL             value
+	C:0332H            LINE#              217
+	C:0332H            LINE#              217
+	C:0338H            LINE#              221
+	C:033BH            LINE#              222
+	C:033EH            LINE#              223
+	C:0343H            LINE#              224
+	C:0347H            LINE#              226
+	C:0354H            LINE#              227
+	C:035CH            LINE#              229
+	C:0369H            LINE#              227
+	C:0370H            LINE#              232
+	C:0378H            LINE#              234
+	C:0381H            LINE#              238
+	C:0387H            LINE#              241
+	C:038FH            LINE#              243
+	C:039CH            LINE#              241
+	C:03A3H            LINE#              246
+	C:03A6H            LINE#              248
+	C:03A6H            LINE#              249
+	-------            ENDPROC            _ForceSingleCoil_05
+	-------            PROC               _PresetSingleRegister_06
+	D:0041H            SYMBOL             registerID
+	D:0043H            SYMBOL             value
+	C:03A9H            LINE#              251
+	C:03A9H            LINE#              251
+	C:03B1H            LINE#              255
+	C:03B4H            LINE#              256
+	C:03B7H            LINE#              257
+	C:03BCH            LINE#              258
+	C:03C0H            LINE#              260
+	C:03CDH            LINE#              261
+	C:03D5H            LINE#              263
+	C:03E2H            LINE#              261
+	C:03E9H            LINE#              266
+	C:03F0H            LINE#              267
+	C:03F8H            LINE#              269
+	C:0405H            LINE#              267
+	C:040CH            LINE#              272
+	C:040FH            LINE#              274
+	C:040FH            LINE#              275
+	-------            ENDPROC            _PresetSingleRegister_06
+	-------            PROC               _ForceMultipleCoils_15
+	D:0017H            SYMBOL             start
+	D:0019H            SYMBOL             cant
+	D:0013H            PUBLIC             i
+	C:0412H            LINE#              277
+	C:0412H            LINE#              277
+	C:041AH            LINE#              281
+	C:041DH            LINE#              282
+	C:0420H            LINE#              283
+	C:0425H            LINE#              284
+	C:0429H            LINE#              286
+	C:0436H            LINE#              287
+	C:043EH            LINE#              289
+	C:044BH            LINE#              287
+	C:0452H            LINE#              292
+	C:0459H            LINE#              293
+	C:0461H            LINE#              295
+	C:046EH            LINE#              293
+	C:0475H            LINE#              298
+	C:047AH            LINE#              299
+	C:0483H            LINE#              300
+	C:048AH            LINE#              302
+	C:049DH            LINE#              304
+	C:04AAH            LINE#              305
+	C:04B3H            LINE#              306
+	C:04BAH            LINE#              302
+	C:04C4H            LINE#              309
+	C:04C7H            LINE#              311
+	C:04C7H            LINE#              312
+	-------            ENDPROC            _ForceMultipleCoils_15
+	-------            PROC               _PresetMultipleRegisters_16
+	D:0027H            SYMBOL             start
+	D:0029H            SYMBOL             cant
+	D:0013H            PUBLIC             i
+	C:04CAH            LINE#              314
+	C:04CAH            LINE#              314
+	C:04D2H            LINE#              318
+	C:04D5H            LINE#              319
+	C:04D8H            LINE#              320
+	C:04DDH            LINE#              321
+	C:04E1H            LINE#              323
+	C:04EEH            LINE#              324
+	C:04F6H            LINE#              326
+	C:0503H            LINE#              324
+	C:050AH            LINE#              329
+	C:0511H            LINE#              330
+	C:0519H            LINE#              332
+	C:0526H            LINE#              330
+	C:052DH            LINE#              335
+	C:0535H            LINE#              336
+	C:053EH            LINE#              337
+	C:0545H            LINE#              339
+	C:0558H            LINE#              341
+	C:0567H            LINE#              343
+	C:0570H            LINE#              344
+	C:0577H            LINE#              345
+	C:057EH            LINE#              346
+	C:0585H            LINE#              339
+	C:058FH            LINE#              349
+	C:0592H            LINE#              351
+	C:0592H            LINE#              352
+	-------            ENDPROC            _PresetMultipleRegisters_16
+	-------            PROC               Serial_Init
+	C:0595H            LINE#              11
+	C:0595H            LINE#              11
+	C:0595H            LINE#              13
+	C:0597H            LINE#              15
+	C:059AH            LINE#              16
+	C:059DH            LINE#              17
+	C:05A0H            LINE#              18
+	C:05A2H            LINE#              19
+	C:05A5H            LINE#              21
+	C:05A7H            LINE#              22
+	C:05A7H            LINE#              22
+	-------            ENDPROC            Serial_Init
+	-------            PROC               _delay_ms
+	D:0004H            SYMBOL             k
+	D:003DH            SYMBOL             s
+	C:05A8H            LINE#              24
+	C:05A8H            LINE#              24
+	C:05A8H            LINE#              27
+	C:05ADH            LINE#              28
+	C:05BDH            LINE#              30
+	C:05C5H            LINE#              28
+	C:05CFH            LINE#              32
+	C:05CFH            LINE#              32
+	-------            ENDPROC            _delay_ms
+	-------            PROC               _tx_byte
+	C:05D0H            LINE#              33
+	C:05D0H            LINE#              33
+	C:05D0H            LINE#              35
+	C:05D2H            LINE#              36
+	C:05D4H            LINE#              37
+	C:05D6H            LINE#              38
+	C:05D9H            LINE#              39
+	C:05D9H            LINE#              39
+	-------            ENDPROC            _tx_byte
+	-------            PROC               SerialPortInt
+	C:05DAH            LINE#              41
+	C:05E8H            LINE#              41
+	C:05E8H            LINE#              43
+	C:05EBH            LINE#              45
+	C:05EDH            LINE#              46
+	C:05F0H            LINE#              62
+	C:05FEH            LINE#              64
+	C:05FFH            LINE#              48
+	C:060BH            LINE#              50
+	C:0612H            LINE#              51
+	C:061DH            LINE#              56
+	C:0622H            LINE#              60
+	C:0625H            LINE#              62
+	C:0627H            LINE#              64
+	-------            ENDPROC            SerialPortInt
+	-------            PROC               main
+	C:0629H            LINE#              66
+	C:0629H            LINE#              66
+	C:0629H            LINE#              68
+	C:062CH            LINE#              70
+	C:0631H            LINE#              71
+	C:0633H            LINE#              72
+	C:063AH            LINE#              76
+	C:0647H            LINE#              77
+	C:064FH            LINE#              78
+	C:065AH            LINE#              80
+	C:0661H            LINE#              86
+	C:066FH            LINE#              87
+	C:0674H            LINE#              89
+	C:067BH            LINE#              90
+	C:0687H            LINE#              93
+	C:068EH            LINE#              95
+	-------            ENDPROC            main
+	-------            ENDMOD             main
+	C:0003H            PUBLIC             ?C_START3
+	D:00A0H            PUBLIC             HPD_ADDR
+	N:007FH            PUBLIC             IDATALEN
+	N:00FFH            PUBLIC             _INITP2?
+
+UNCALLED SEGMENTS:
+------------------
+    ?PR?AsciiToTwoByte?MAIN: Function AsciiToTwoByte in file F:\REINIER\ESTUDIO\TESIS\PROTEUS\CAP&
+03\C_CODE_MASTER\MAIN.OBJ was not called
+    ?PR?_ForceMultipleCoils_15?MAIN: Function _ForceMultipleCoils_15 in file F:\REINIER\ESTUDIO\T&
+ESIS\PROTEUS\CAP03\C_CODE_MASTER\MAIN.OBJ was not called
+    ?PR?_ForceSingleCoil_05?MAIN: Function _ForceSingleCoil_05 in file F:\REINIER\ESTUDIO\TESIS\P&
+ROTEUS\CAP03\C_CODE_MASTER\MAIN.OBJ was not called
+    ?PR?_PresetMultipleRegisters_16?MAIN: Function _PresetMultipleRegisters_16 in file F:\REINIER&
+\ESTUDIO\TESIS\PROTEUS\CAP03\C_CODE_MASTER\MAIN.OBJ was not called
+    ?PR?_ReadCoilStatus_01?MAIN: Function _ReadCoilStatus_01 in file F:\REINIER\ESTUDIO\TESIS\PRO&
+TEUS\CAP03\C_CODE_MASTER\MAIN.OBJ was not called
+    ?PR?_ReadHoldingRegisters_03?MAIN: Function _ReadHoldingRegisters_03 in file F:\REINIER\ESTUD&
+IO\TESIS\PROTEUS\CAP03\C_CODE_MASTER\MAIN.OBJ was not called
+    ?PR?_ReadInputRegisters_04?MAIN: Function _ReadInputRegisters_04 in file F:\REINIER\ESTUDIO\T&
+ESIS\PROTEUS\CAP03\C_CODE_MASTER\MAIN.OBJ was not called
+    ?PR?_ReadInputStatus_02?MAIN: Function _ReadInputStatus_02 in file F:\REINIER\ESTUDIO\TESIS\P&
+ROTEUS\CAP03\C_CODE_MASTER\MAIN.OBJ was not called
+    ?PR?_tx_byte2?MAIN: Function _tx_byte2 in file F:\REINIER\ESTUDIO\TESIS\PROTEUS\CAP03\C_CODE_&
+MASTER\MAIN.OBJ was not called
+    ?PR?_tx_byte?MAIN: Function _tx_byte in file F:\REINIER\ESTUDIO\TESIS\PROTEUS\CAP03\C_CODE_MA&
+STER\MAIN.OBJ was not called
+
+----------------------
+SUGGESTED OPTIMIZATION
+----------------------
+Warning: 59 (3BH) data bytes in the range [00H-80H] are available for storage.
+         Consider using some of these for 'data' variables in your source files.
+
+
+LINK/LOCATE RUN COMPLETE,  NO ERROR FOUND.
+

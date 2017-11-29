@@ -1,0 +1,75 @@
+MS-DOS LX51 CODE BANKING LINKER/LOCATOR V05.08.10.309
+
+
+INTER-MODULE CROSS-REFERENCE LISTING
+------------------------------------
+
+          NAME. . . . . . . . USAGE   MODULE NAMES
+          ----------------------------------------
+          ?C_CMPL . . . . . . CODE    [CMPL]:  MAIN
+          ?C_CMPLS  . . . . . CODE    [CMPL]:  MAIN
+          ?C_IMUL . . . . . . CODE    [MULS]:  MAIN
+          ?C_IMULX  . . . . . CODE    [MULS]: 
+          ?C_INITSEGSTART . . CODE    [_C_INITD]:  C1S
+          ?C_SIDIV  . . . . . CODE    [DIVS]:  MAIN
+          ?C_START1 . . . . . CODE    [C1S]:  MAIN
+          ?C_UIDIV  . . . . . CODE    [DIVS]: 
+          ascii . . . . . . . DATA    [MAIN]: 
+          AsciiToTwoByte  . . CODE    [MAIN]: 
+          ascii_frame . . . . IDATA   [MAIN]: 
+          broadcast . . . . . BIT     [MAIN]: 
+          BUSY  . . . . . . . DATA    [MAIN]: 
+          cant  . . . . . . . DATA    [MAIN]: 
+          clear_frame . . . . CODE    [MAIN]:  MAIN
+          coils_array . . . . IDATA   [MAIN]: 
+          CPL_R4R5  . . . . . CODE    [DIVS]: 
+          CPL_R6R7  . . . . . CODE    [DIVS]: 
+          data_count  . . . . IDATA   [MAIN]: 
+          DIV_2 . . . . . . . CODE    [DIVS]: 
+          execute_modbus_commaCODE    [MAIN]: 
+          gen_lrc . . . . . . CODE    [MAIN]: 
+          hexa  . . . . . . . DATA    [MAIN]: 
+          holding_registers_arIDATA   [MAIN]: 
+          HPD_ADDR  . . . . . DATA    [HPD]:  C1S
+          IDATALEN  . . . . . NUMBER  [_C_IDATALEN]:  C1S
+          inputs_array  . . . IDATA   [MAIN]: 
+          inputs_registers_arrIDATA   [MAIN]: 
+          last_data_count . . DATA    [MAIN]: 
+          last_hash . . . . . DATA    [MAIN]: 
+          led_count . . . . . DATA    [MAIN]: 
+          level . . . . . . . DATA    [MAIN]: 
+          lrc_calc  . . . . . CODE    [MAIN]:  MAIN
+          main  . . . . . . . CODE    [MAIN]:  C1S
+          make_hash . . . . . CODE    [MAIN]: 
+          PWM . . . . . . . . CODE    [MAIN]: 
+          ResponseForceMultiplCODE    [MAIN]:  MAIN
+          ResponseForceSingleCCODE    [MAIN]:  MAIN
+          ResponsePresetMultipCODE    [MAIN]:  MAIN
+          ResponsePresetSingleCODE    [MAIN]:  MAIN
+          ResponseReadCoilsStaCODE    [MAIN]:  MAIN
+          ResponseReadHoldingRCODE    [MAIN]:  MAIN
+          ResponseReadInputRegCODE    [MAIN]:  MAIN
+          ResponseReadInputStaCODE    [MAIN]:  MAIN
+          RST_STK4?C  . . . . CODE    [RSTSTK4]:  CMPL
+          sec_count . . . . . DATA    [MAIN]: 
+          send_count  . . . . IDATA   [MAIN]: 
+          SerialPortInt . . . CODE    [MAIN]: 
+          Serial_PWM_Init . . CODE    [MAIN]: 
+          TIM1_INIT . . . . . NUMBER  [** UNRESOLVED **]:
+          tx_assci_frame  . . CODE    [MAIN]: 
+          update_display  . . CODE    [MAIN]: 
+          XSTACKLEN . . . . . NUMBER  [** UNRESOLVED **]:
+          _7seg . . . . . . . IDATA   [MAIN]: 
+          _AsciiToByte  . . . CODE    [MAIN]: 
+          _ByteToAscii  . . . CODE    [MAIN]: 
+          _delay_ms . . . . . CODE    [MAIN]: 
+          _GetCoilValue . . . CODE    [MAIN]: 
+          _GetHoldingRegisterVCODE    [MAIN]: 
+          _GetInputRegisterValCODE    [MAIN]: 
+          _GetInputValue  . . CODE    [MAIN]: 
+          _INITP2?  . . . . . NUMBER  [_C_IDATALEN]:  C1S
+          _NibbleToAscii  . . CODE    [MAIN]: 
+          _SetCoilValue . . . CODE    [MAIN]: 
+          _SetHoldingRegisterVCODE    [MAIN]: 
+          _STACK  . . . . . . IDATA   [MAIN]:  C1S
+          _TwoByteToAscii . . CODE    [MAIN]: 

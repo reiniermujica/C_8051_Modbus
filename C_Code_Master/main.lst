@@ -1,0 +1,1642 @@
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE  1
+
+QCW(0x00002F32)
+
+DOS RC51 COMPILER V03.08.10.309, COMPILATION OF MODULE MAIN      
+OBJECT MODULE PLACED IN F:\Reinier\Estudio\TESIS\PROTEUS\Cap03\C_Code_Master\mai
+            -n.obj
+COMPILER INVOKED BY: QUIET GENERATEDEPFILE OJ(F:\Reinier\Estudio\TESIS\PROTEUS\C
+            -ap03\C_Code_Master\main.obj) PIN(C:\Program Files (x86)\Raisonance\
+            -Ride\Inc;C:\Program Files (x86)\Raisonance\Ride\Inc\51) PIN(C:\Prog
+            -ram Files (x86)\Raisonance\Ride\\inc\51) NOAM CD PR(F:\Reinier\Estu
+            -dio\TESIS\PROTEUS\Cap03\C_Code_Master\main.lst) FP(NOFLOAT) IP NOIS
+            - UNSIGNEDCHAR ET(CHAR) PR PL(60) PW(80) OE(1) OT(7,SPEED) RB(0) MAX
+            -ERR(25) MAXWAR(25) SM MOD517(NODP8,NOAU) 
+
+stmt level    source
+   1          #include <stdio.h>
+   2          #include <main.h>
+   3          #include <master.h>
+   4          
+   5          
+   6          int word = 0; 
+   7          int i = 0;
+   8          int coil = 0;
+   9          
+  10          
+  11          void Serial_Init()
+  12          { 
+  13   1          RS485En = 0; // set for rx
+  14   1      
+  15   1          TMOD = 0x20; 
+  16   1          TH1 = TIMER_HIGHT;
+  17   1          TL1 = TIMER_LOW;  //2400 BAUDS
+  18   1          TR1 = 1;  
+  19   1          SCON = 0x50;    //mode 1 8 bits 1 start, 8 data, 1 stop 
+  20   1          
+  21   1          ES = 1;
+  22   1      } 
+  23          
+  24          void delay_ms(unsigned int d)
+  25          {
+  26   1          int k = 0;
+  27   1          int s = 0;
+  28   1          for ( k = 0; k < d; k++ )
+  29   1          {     
+  30   2              s++;
+  31   2          }
+  32   1      }
+  33          void tx_byte(char byte)     //transmit a single byte
+  34          {      
+  35   1          TI = 0;
+  36   1          TB8 = 0;
+  37   1          SBUF = byte;
+  38   1          while (!TI);
+  39   1      }
+  40          
+  41          void SerialPortInt() interrupt 4
+  42          {
+  43   1          if( TI == 1 )
+  44   1          {       
+  45   2              TI = 0;
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:24  PAGE 24
+
+  46   2              if ( RS485En == 0 ) return;
+  47   2                  
+  48   2              if ( send_count < data_count )
+  49   2              {         
+  50   3                  delay_ms(100);        
+  51   3                  SBUF = ascii_frame[send_count++];     
+  52   3                 
+  53   3              }
+  54   2              else
+  55   2              {                                
+  56   3                  clear_frame();          
+  57   3              }
+  58   2          }
+  59   1          else                 
+  60   1          if( RI == 1 )
+  61   1          {
+  62   2              RI = 0;
+  63   2          }
+  64   1      }
+
+*** WARNING C233 IN LINE 64 OF F:\Reinier\Estudio\TESIS\PROTEUS\Cap03\C_Code_Ma
+            -ster\main.c : using absolute registers together with interrupts can
+            - cause register corruptions (mixup of register banks)
+  65          
+  66          void main(void)
+  67          {        
+  68   1          Serial_Init();
+  69   1         
+  70   1          word = 0;   
+  71   1          EA = 1;
+  72   1          delay_ms(100000);
+  73   1           
+  74   1          while (1)
+  75   1          {            
+  76   2              PresetSingleRegister_06(5, 1, word);
+  77   2              word++;
+  78   2              if ( word == 20 ) word = 0;
+  79   2              
+  80   2              delay_ms(100000);    
+  81   2             
+  82   2              
+  83   2              // ForceSingleCoil_05(5, 1, coil);
+  84   2              
+  85   2              
+  86   2              if ( coil == 0 ) coil = 1;
+  87   2                  else coil = 0;
+  88   2                  
+  89   2              delay_ms(100000);
+  90   2              PresetSingleRegister_06(5, 2, 5);
+  91   2              
+  92   2           
+  93   2             delay_ms(100000);
+  94   2          }    
+  95   1      }
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:24  PAGE 28
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+            ; FUNCTION _ByteToAscii (BEGIN)
+              ; Register R7 is assigned to parameter val
+              ; R6 is assigned to a
+              ; R5 is assigned to b
+                                           ; SOURCE LINE # 19 
+0000 75F010         MOV    B,#010H
+0003 EF             MOV    A,R7
+0004 84             DIV    AB
+0005 FE             MOV    R6,A
+                                           ; SOURCE LINE # 20 
+0006 EF             MOV    A,R7
+0007 540F           ANL    A,#00FH
+0009 FD             MOV    R5,A
+                                           ; SOURCE LINE # 22 
+000A BE0901         CJNE   R6,#009H,?LAB5
+000D D3             SETB   C
+000E         ?LAB5:
+000E 5007           JNC    ?ELSE2
+                                           ; SOURCE LINE # 24 
+0010 EE             MOV    A,R6
+0011 2430           ADD    A,#030H
+0013 F500    R      MOV    ascii,A
+0015 8005           SJMP   ?NXT2
+0017         ?ELSE2:
+                                           ; SOURCE LINE # 28 
+0017 EE             MOV    A,R6
+0018 2437           ADD    A,#037H
+001A F500    R      MOV    ascii,A
+001C         ?NXT2:
+                                           ; SOURCE LINE # 31 
+001C ED             MOV    A,R5
+001D B40901         CJNE   A,#009H,?LAB7
+0020 D3             SETB   C
+0021         ?LAB7:
+0021 5006           JNC    ?ELSE3
+                                           ; SOURCE LINE # 33 
+0023 ED             MOV    A,R5
+0024 2430           ADD    A,#030H
+0026 F500    R      MOV    ascii+01H,A
+0028 22             RET    
+0029         ?ELSE3:
+                                           ; SOURCE LINE # 37 
+0029 ED             MOV    A,R5
+002A 2437           ADD    A,#037H
+002C F500    R      MOV    ascii+01H,A
+                                           ; SOURCE LINE # 40 
+002E 22             RET    
+
+            ; FUNCTION _ByteToAscii (END)
+
+            ; FUNCTION _NibbleToAscii (BEGIN)
+              ; Register R7 is assigned to parameter val
+                                           ; SOURCE LINE # 44 
+0000 BF0901         CJNE   R7,#009H,?LAB14
+0003 D3             SETB   C
+0004         ?LAB14:
+0004 5005           JNC    ?ELSE5
+                                           ; SOURCE LINE # 46 
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE  2
+
+0006 EF             MOV    A,R7
+0007 2430           ADD    A,#030H
+0009 FF             MOV    R7,A
+                                           ; SOURCE LINE # 52 
+000A 22             RET    
+000B         ?ELSE5:
+                                           ; SOURCE LINE # 50 
+000B EF             MOV    A,R7
+000C 2437           ADD    A,#037H
+000E FF             MOV    R7,A
+                                           ; SOURCE LINE # 52 
+000F 22             RET    
+
+            ; FUNCTION _NibbleToAscii (END)
+
+            ; FUNCTION _AsciiToByte (BEGIN)
+              ; Register R7 is assigned to parameter a
+              ; Register R5 is assigned to parameter b
+                                           ; SOURCE LINE # 56 
+0000 BF4100         CJNE   R7,#041H,?LAB23
+0003         ?LAB23:
+0003 4006           JC     ?ELSE8
+                                           ; SOURCE LINE # 58 
+0005 EF             MOV    A,R7
+0006 24C9           ADD    A,#0C9H
+0008 FF             MOV    R7,A
+0009 8004           SJMP   ?NXT8
+000B         ?ELSE8:
+                                           ; SOURCE LINE # 62 
+000B EF             MOV    A,R7
+000C 24D0           ADD    A,#0D0H
+000E FF             MOV    R7,A
+000F         ?NXT8:
+                                           ; SOURCE LINE # 65 
+000F ED             MOV    A,R5
+0010 B44100         CJNE   A,#041H,?LAB25
+0013         ?LAB25:
+0013 4006           JC     ?ELSE9
+                                           ; SOURCE LINE # 67 
+0015 ED             MOV    A,R5
+0016 24C9           ADD    A,#0C9H
+0018 FD             MOV    R5,A
+0019 8004           SJMP   ?NXT9
+001B         ?ELSE9:
+                                           ; SOURCE LINE # 71 
+001B ED             MOV    A,R5
+001C 24D0           ADD    A,#0D0H
+001E FD             MOV    R5,A
+001F         ?NXT9:
+                                           ; SOURCE LINE # 74 
+001F EF             MOV    A,R7
+0020 75F010         MOV    B,#010H
+0023 A4             MUL    AB
+0024 2D             ADD    A,R5
+0025 FF             MOV    R7,A
+                                           ; SOURCE LINE # 75 
+0026 22             RET    
+
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE  3
+
+            ; FUNCTION _AsciiToByte (END)
+
+            ; FUNCTION _TwoByteToAscii (BEGIN)
+              ; Register R6R7 is assigned to parameter val
+              ; R4R5 is assigned to i
+                                           ; SOURCE LINE # 80 
+0000 7804           MOV    R0,#004H
+0002 7900    R      MOV    R1,#hexa
+0004 E4             CLR    A
+0005         ?NXT16:
+0005 F7             MOV    @R1,A
+0006 09             INC    R1
+0007 D8FC           DJNZ   R0,?NXT16
+              ; R4R5 is assigned to i
+                                           ; SOURCE LINE # 83 
+0009 E4             CLR    A
+000A FC             MOV    R4,A
+000B FD             MOV    R5,A
+000C         ?WHILE1:
+                                           ; SOURCE LINE # 84 
+000C BE0004         CJNE   R6,#000H,?LAB35
+000F BF0001         CJNE   R7,#000H,?LAB35
+0012 D3             SETB   C
+0013         ?LAB35:
+0013 4022           JC     ?NXT17
+                                           ; SOURCE LINE # 86 
+0015 EF             MOV    A,R7
+0016 540F           ANL    A,#00FH
+0018 FA             MOV    R2,A
+0019 ED             MOV    A,R5
+001A 2400    R      ADD    A,#hexa
+001C F8             MOV    R0,A
+001D A602           MOV    @R0,AR2
+                                           ; SOURCE LINE # 87 
+001F 8F03           MOV    AR3,R7
+0021 EE             MOV    A,R6
+0022 75F004         MOV    B,#004H
+0025         ?LAB37:
+0025 C3             CLR    C
+0026 13             RRC    A
+0027 CB             XCH    A,R3
+0028 13             RRC    A
+0029 CB             XCH    A,R3
+002A D5F0F8         DJNZ   B,?LAB37
+002D FE             MOV    R6,A
+002E 8B07           MOV    AR7,R3
+                                           ; SOURCE LINE # 88 
+0030 0D             INC    R5
+0031 ED             MOV    A,R5
+0032 70D8           JNZ    ?WHILE1
+0034 0C             INC    R4
+0035 80D5           SJMP   ?WHILE1
+0037         ?NXT17:
+              ; R2R3 is assigned to i
+                                           ; SOURCE LINE # 91 
+0037 E4             CLR    A
+0038 FB             MOV    R3,A
+0039         ?FOR3:
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE  4
+
+                                           ; SOURCE LINE # 92 
+0039 EB             MOV    A,R3
+003A 2400    R      ADD    A,#hexa
+003C F8             MOV    R0,A
+003D 8607           MOV    AR7,@R0
+003F 120000  R      LCALL  _NibbleToAscii
+0042 EB             MOV    A,R3
+0043 2400    R      ADD    A,#ascii
+0045 F8             MOV    R0,A
+0046 A607           MOV    @R0,AR7
+                                           ; SOURCE LINE # 91 
+0048 0B             INC    R3
+0049 BB04ED         CJNE   R3,#004H,?FOR3
+                                           ; SOURCE LINE # 95 
+004C 22             RET    
+
+            ; FUNCTION _TwoByteToAscii (END)
+
+            ; FUNCTION AsciiToTwoByte (BEGIN)
+              ; R2R3 is assigned to a
+                                           ; SOURCE LINE # 99 
+0000 AF00    R      MOV    R7,ascii
+0002 AD00    R      MOV    R5,ascii+01H
+0004 120000  R      LCALL  _AsciiToByte
+0007 8F03           MOV    AR3,R7
+                                           ; SOURCE LINE # 100 
+0009 AF00    R      MOV    R7,ascii+02H
+000B AD00    R      MOV    R5,ascii+03H
+000D 120000  R      LCALL  _AsciiToByte
+0010 750000  R      MOV    b,#000H
+0013 8F00    R      MOV    b+01H,R7
+                                           ; SOURCE LINE # 102 
+0015 E4             CLR    A
+0016 2500    R      ADD    A,b+01H
+0018 F500    R      MOV    result+01H,A
+001A EB             MOV    A,R3
+001B 3500    R      ADDC   A,b
+001D F500    R      MOV    result,A
+                                           ; SOURCE LINE # 104 
+001F AE00    R      MOV    R6,result
+0021 AF00    R      MOV    R7,result+01H
+                                           ; SOURCE LINE # 105 
+0023 22             RET    
+
+            ; FUNCTION AsciiToTwoByte (END)
+
+            ; FUNCTION gen_start (BEGIN)
+                                           ; SOURCE LINE # 44 
+0000 7900    R      MOV    R1,#ascii_frame
+0002 773A           MOV    @R1,#03AH
+                                           ; SOURCE LINE # 45 
+0004 22             RET    
+
+            ; FUNCTION gen_start (END)
+
+            ; FUNCTION _gen_dir (BEGIN)
+              ; Register R7 is assigned to parameter val
+                                           ; SOURCE LINE # 49 
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE  5
+
+0000 120000  R      LCALL  _ByteToAscii
+                                           ; SOURCE LINE # 50 
+0003 7900    R      MOV    R1,#ascii_frame+01H
+0005 A700    R      MOV    @R1,ascii
+                                           ; SOURCE LINE # 51 
+0007 7900    R      MOV    R1,#ascii_frame+02H
+0009 A700    R      MOV    @R1,ascii+01H
+                                           ; SOURCE LINE # 52 
+000B 22             RET    
+
+            ; FUNCTION _gen_dir (END)
+
+            ; FUNCTION _gen_function (BEGIN)
+              ; Register R7 is assigned to parameter val
+                                           ; SOURCE LINE # 56 
+0000 120000  R      LCALL  _ByteToAscii
+                                           ; SOURCE LINE # 57 
+0003 7900    R      MOV    R1,#ascii_frame+03H
+0005 A700    R      MOV    @R1,ascii
+                                           ; SOURCE LINE # 58 
+0007 7900    R      MOV    R1,#ascii_frame+04H
+0009 A700    R      MOV    @R1,ascii+01H
+                                           ; SOURCE LINE # 59 
+000B 22             RET    
+
+            ; FUNCTION _gen_function (END)
+
+            ; FUNCTION gen_lrc (BEGIN)
+                                           ; SOURCE LINE # 63 
+0000 120000  R      LCALL  lrc_calc
+0003 120000  R      LCALL  _ByteToAscii
+                                           ; SOURCE LINE # 64 
+0006 7900    R      MOV    R1,#data_count
+0008 E7             MOV    A,@R1
+0009 07             INC    @R1
+000A 2400    R      ADD    A,#ascii_frame
+000C F8             MOV    R0,A
+000D A600    R      MOV    @R0,ascii
+                                           ; SOURCE LINE # 65 
+000F E7             MOV    A,@R1
+0010 07             INC    @R1
+0011 2400    R      ADD    A,#ascii_frame
+0013 F8             MOV    R0,A
+0014 A600    R      MOV    @R0,ascii+01H
+                                           ; SOURCE LINE # 67 
+0016 E7             MOV    A,@R1
+0017 07             INC    @R1
+0018 2400    R      ADD    A,#ascii_frame
+001A F8             MOV    R0,A
+001B 760D           MOV    @R0,#00DH
+                                           ; SOURCE LINE # 68 
+001D E7             MOV    A,@R1
+001E 07             INC    @R1
+001F 2400    R      ADD    A,#ascii_frame
+0021 F8             MOV    R0,A
+0022 760A           MOV    @R0,#00AH
+                                           ; SOURCE LINE # 69 
+0024 22             RET    
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE  6
+
+
+            ; FUNCTION gen_lrc (END)
+
+            ; FUNCTION clear_frame (BEGIN)
+              ; R7 is assigned to i
+                                           ; SOURCE LINE # 74 
+0000 7900    R      MOV    R1,#data_count
+0002 7700           MOV    @R1,#000H
+                                           ; SOURCE LINE # 75 
+0004 7900    R      MOV    R1,#send_count
+0006 7700           MOV    @R1,#000H
+                                           ; SOURCE LINE # 76 
+0008 7E3C           MOV    R6,#03CH
+000A 7900    R      MOV    R1,#ascii_frame
+000C E4             CLR    A
+000D         ?NXT23:
+000D F7             MOV    @R1,A
+000E 09             INC    R1
+000F DEFC           DJNZ   R6,?NXT23
+                                           ; SOURCE LINE # 80 
+0011 22             RET    
+
+            ; FUNCTION clear_frame (END)
+
+            ; FUNCTION tx_assci_frame (BEGIN)
+                                           ; SOURCE LINE # 84 
+0000 D2A7           SETB   RS485En
+                                           ; SOURCE LINE # 86 
+0002 7900    R      MOV    R1,#send_count
+0004 7701           MOV    @R1,#001H
+                                           ; SOURCE LINE # 87 
+0006 C299           CLR    TI
+                                           ; SOURCE LINE # 88 
+0008 C29B           CLR    TB8
+                                           ; SOURCE LINE # 89 
+000A 7900    R      MOV    R1,#ascii_frame
+000C 8799           MOV    SBUF,@R1
+000E         ?WHILE3:
+                                           ; SOURCE LINE # 90 
+000E 7900    R      MOV    R1,#send_count
+0010 E7             MOV    A,@R1
+0011 70FB           JNZ    ?WHILE3
+                                           ; SOURCE LINE # 91 
+0013 22             RET    
+
+            ; FUNCTION tx_assci_frame (END)
+
+            ; FUNCTION lrc_calc (BEGIN)
+              ; R6 is assigned to result
+              ; R4 is assigned to i
+                                           ; SOURCE LINE # 95 
+0000 7E00           MOV    R6,#000H
+                                           ; SOURCE LINE # 97 
+0002 750001  R      MOV    i,#001H
+0005         ?FOR7:
+0005 7900    R      MOV    R1,#data_count
+0007 87F0           MOV    B,@R1
+0009 E500    R      MOV    A,i
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE  7
+
+000B B5F000         CJNE   A,B,?LAB57
+000E         ?LAB57:
+000E 501A           JNC    ?NXT28
+                                           ; SOURCE LINE # 99 
+0010 E500    R      MOV    A,i
+0012 2400    R      ADD    A,#ascii_frame
+0014 F8             MOV    R0,A
+0015 8607           MOV    AR7,@R0
+0017 E500    R      MOV    A,i
+0019 2400    R      ADD    A,#ascii_frame+01H
+001B F8             MOV    R0,A
+001C 8605           MOV    AR5,@R0
+001E 120000  R      LCALL  _AsciiToByte
+0021 EE             MOV    A,R6
+0022 2F             ADD    A,R7
+0023 FE             MOV    R6,A
+                                           ; SOURCE LINE # 97 
+0024 0500    R      INC    i
+0026 0500    R      INC    i
+0028 80DB           SJMP   ?FOR7
+002A         ?NXT28:
+                                           ; SOURCE LINE # 102 
+002A EE             MOV    A,R6
+002B F4             CPL    A
+                                           ; SOURCE LINE # 103 
+002C 04             INC    A
+002D FF             MOV    R7,A
+                                           ; SOURCE LINE # 104 
+002E 22             RET    
+
+            ; FUNCTION lrc_calc (END)
+
+            ; FUNCTION _tx_byte2 (BEGIN)
+              ; Register R7 is assigned to parameter byte
+                                           ; SOURCE LINE # 108 
+0000 C299           CLR    TI
+                                           ; SOURCE LINE # 109 
+0002 C29B           CLR    TB8
+                                           ; SOURCE LINE # 110 
+0004 8F99           MOV    SBUF,R7
+0006         ?WHILE5:
+                                           ; SOURCE LINE # 111 
+0006 3099FD         JNB    TI,?WHILE5
+                                           ; SOURCE LINE # 112 
+0009 22             RET    
+
+            ; FUNCTION _tx_byte2 (END)
+
+            ; FUNCTION _ReadCoilStatus_01 (BEGIN)
+              ; Register R7 is assigned to parameter dir
+                                           ; SOURCE LINE # 115 
+0000 8C00    R      MOV    start,R4
+0002 8D00    R      MOV    start+01H,R5
+0004 8A00    R      MOV    cant,R2
+0006 8B00    R      MOV    cant+01H,R3
+              ; R2R3 is assigned to i
+                                           ; SOURCE LINE # 119 
+0008 120000  R      LCALL  gen_start
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE  8
+
+                                           ; SOURCE LINE # 120 
+000B 120000  R      LCALL  _gen_dir
+                                           ; SOURCE LINE # 121 
+000E 7F01           MOV    R7,#001H
+0010 120000  R      LCALL  _gen_function
+                                           ; SOURCE LINE # 122 
+0013 7900    R      MOV    R1,#data_count
+0015 7705           MOV    @R1,#005H
+                                           ; SOURCE LINE # 124 
+0017 E500    R      MOV    A,start+01H
+0019 24FF           ADD    A,#0FFH
+001B FF             MOV    R7,A
+001C E500    R      MOV    A,start
+001E 34FF           ADDC   A,#0FFH
+0020 FE             MOV    R6,A
+0021 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 125 
+0024 E4             CLR    A
+0025 FE             MOV    R6,A
+0026 7F03           MOV    R7,#003H
+0028         ?FOR10:
+0028 EE             MOV    A,R6
+0029 20E714         JB     ACC.7,?NXT36
+                                           ; SOURCE LINE # 127 
+002C EF             MOV    A,R7
+002D 2400    R      ADD    A,#ascii
+002F F8             MOV    R0,A
+0030 7900    R      MOV    R1,#data_count
+0032 E7             MOV    A,@R1
+0033 07             INC    @R1
+0034 2400    R      ADD    A,#ascii_frame
+0036 F9             MOV    R1,A
+0037 E6             MOV    A,@R0
+0038 F7             MOV    @R1,A
+                                           ; SOURCE LINE # 125 
+0039 EF             MOV    A,R7
+003A 1F             DEC    R7
+003B 70EB           JNZ    ?FOR10
+003D 1E             DEC    R6
+003E 80E8           SJMP   ?FOR10
+0040         ?NXT36:
+                                           ; SOURCE LINE # 130 
+0040 AE00    R      MOV    R6,cant
+0042 AF00    R      MOV    R7,cant+01H
+0044 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 131 
+0047 E4             CLR    A
+0048 FE             MOV    R6,A
+0049 7F03           MOV    R7,#003H
+004B         ?FOR11:
+004B EE             MOV    A,R6
+004C 20E714         JB     ACC.7,?NXT38
+                                           ; SOURCE LINE # 133 
+004F EF             MOV    A,R7
+0050 2400    R      ADD    A,#ascii
+0052 F8             MOV    R0,A
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE  9
+
+0053 7900    R      MOV    R1,#data_count
+0055 E7             MOV    A,@R1
+0056 07             INC    @R1
+0057 2400    R      ADD    A,#ascii_frame
+0059 F9             MOV    R1,A
+005A E6             MOV    A,@R0
+005B F7             MOV    @R1,A
+                                           ; SOURCE LINE # 131 
+005C EF             MOV    A,R7
+005D 1F             DEC    R7
+005E 70EB           JNZ    ?FOR11
+0060 1E             DEC    R6
+0061 80E8           SJMP   ?FOR11
+0063         ?NXT38:
+                                           ; SOURCE LINE # 135 
+0063 120000  R      LCALL  gen_lrc
+                                           ; SOURCE LINE # 137 
+0066 020000  R      LJMP   tx_assci_frame
+
+            ; FUNCTION _ReadCoilStatus_01 (END)
+
+            ; FUNCTION _ReadInputStatus_02 (BEGIN)
+              ; Register R7 is assigned to parameter dir
+                                           ; SOURCE LINE # 140 
+0000 8C00    R      MOV    start,R4
+0002 8D00    R      MOV    start+01H,R5
+0004 8A00    R      MOV    cant,R2
+0006 8B00    R      MOV    cant+01H,R3
+              ; R2R3 is assigned to i
+                                           ; SOURCE LINE # 144 
+0008 120000  R      LCALL  gen_start
+                                           ; SOURCE LINE # 145 
+000B 120000  R      LCALL  _gen_dir
+                                           ; SOURCE LINE # 146 
+000E 7F02           MOV    R7,#002H
+0010 120000  R      LCALL  _gen_function
+                                           ; SOURCE LINE # 147 
+0013 7900    R      MOV    R1,#data_count
+0015 7705           MOV    @R1,#005H
+                                           ; SOURCE LINE # 149 
+0017 E500    R      MOV    A,start+01H
+0019 24FF           ADD    A,#0FFH
+001B FF             MOV    R7,A
+001C E500    R      MOV    A,start
+001E 34FF           ADDC   A,#0FFH
+0020 FE             MOV    R6,A
+0021 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 150 
+0024 E4             CLR    A
+0025 FE             MOV    R6,A
+0026 7F03           MOV    R7,#003H
+0028         ?FOR14:
+0028 EE             MOV    A,R6
+0029 20E714         JB     ACC.7,?NXT44
+                                           ; SOURCE LINE # 152 
+002C EF             MOV    A,R7
+002D 2400    R      ADD    A,#ascii
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE 10
+
+002F F8             MOV    R0,A
+0030 7900    R      MOV    R1,#data_count
+0032 E7             MOV    A,@R1
+0033 07             INC    @R1
+0034 2400    R      ADD    A,#ascii_frame
+0036 F9             MOV    R1,A
+0037 E6             MOV    A,@R0
+0038 F7             MOV    @R1,A
+                                           ; SOURCE LINE # 150 
+0039 EF             MOV    A,R7
+003A 1F             DEC    R7
+003B 70EB           JNZ    ?FOR14
+003D 1E             DEC    R6
+003E 80E8           SJMP   ?FOR14
+0040         ?NXT44:
+                                           ; SOURCE LINE # 155 
+0040 AE00    R      MOV    R6,cant
+0042 AF00    R      MOV    R7,cant+01H
+0044 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 156 
+0047 E4             CLR    A
+0048 FE             MOV    R6,A
+0049 7F03           MOV    R7,#003H
+004B         ?FOR15:
+004B EE             MOV    A,R6
+004C 20E714         JB     ACC.7,?NXT46
+                                           ; SOURCE LINE # 158 
+004F EF             MOV    A,R7
+0050 2400    R      ADD    A,#ascii
+0052 F8             MOV    R0,A
+0053 7900    R      MOV    R1,#data_count
+0055 E7             MOV    A,@R1
+0056 07             INC    @R1
+0057 2400    R      ADD    A,#ascii_frame
+0059 F9             MOV    R1,A
+005A E6             MOV    A,@R0
+005B F7             MOV    @R1,A
+                                           ; SOURCE LINE # 156 
+005C EF             MOV    A,R7
+005D 1F             DEC    R7
+005E 70EB           JNZ    ?FOR15
+0060 1E             DEC    R6
+0061 80E8           SJMP   ?FOR15
+0063         ?NXT46:
+                                           ; SOURCE LINE # 160 
+0063 120000  R      LCALL  gen_lrc
+                                           ; SOURCE LINE # 162 
+0066 020000  R      LJMP   tx_assci_frame
+
+            ; FUNCTION _ReadInputStatus_02 (END)
+
+            ; FUNCTION _ReadHoldingRegisters_03 (BEGIN)
+              ; Register R7 is assigned to parameter dir
+                                           ; SOURCE LINE # 166 
+0000 8C00    R      MOV    start,R4
+0002 8D00    R      MOV    start+01H,R5
+0004 8A00    R      MOV    cant,R2
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE 11
+
+0006 8B00    R      MOV    cant+01H,R3
+              ; R2R3 is assigned to i
+                                           ; SOURCE LINE # 170 
+0008 120000  R      LCALL  gen_start
+                                           ; SOURCE LINE # 171 
+000B 120000  R      LCALL  _gen_dir
+                                           ; SOURCE LINE # 172 
+000E 7F03           MOV    R7,#003H
+0010 120000  R      LCALL  _gen_function
+                                           ; SOURCE LINE # 173 
+0013 7900    R      MOV    R1,#data_count
+0015 7705           MOV    @R1,#005H
+                                           ; SOURCE LINE # 175 
+0017 E500    R      MOV    A,start+01H
+0019 24FF           ADD    A,#0FFH
+001B FF             MOV    R7,A
+001C E500    R      MOV    A,start
+001E 34FF           ADDC   A,#0FFH
+0020 FE             MOV    R6,A
+0021 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 176 
+0024 E4             CLR    A
+0025 FE             MOV    R6,A
+0026 7F03           MOV    R7,#003H
+0028         ?FOR18:
+0028 EE             MOV    A,R6
+0029 20E714         JB     ACC.7,?NXT52
+                                           ; SOURCE LINE # 178 
+002C EF             MOV    A,R7
+002D 2400    R      ADD    A,#ascii
+002F F8             MOV    R0,A
+0030 7900    R      MOV    R1,#data_count
+0032 E7             MOV    A,@R1
+0033 07             INC    @R1
+0034 2400    R      ADD    A,#ascii_frame
+0036 F9             MOV    R1,A
+0037 E6             MOV    A,@R0
+0038 F7             MOV    @R1,A
+                                           ; SOURCE LINE # 176 
+0039 EF             MOV    A,R7
+003A 1F             DEC    R7
+003B 70EB           JNZ    ?FOR18
+003D 1E             DEC    R6
+003E 80E8           SJMP   ?FOR18
+0040         ?NXT52:
+                                           ; SOURCE LINE # 181 
+0040 AE00    R      MOV    R6,cant
+0042 AF00    R      MOV    R7,cant+01H
+0044 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 182 
+0047 E4             CLR    A
+0048 FE             MOV    R6,A
+0049 7F03           MOV    R7,#003H
+004B         ?FOR19:
+004B EE             MOV    A,R6
+004C 20E714         JB     ACC.7,?NXT54
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE 12
+
+                                           ; SOURCE LINE # 184 
+004F EF             MOV    A,R7
+0050 2400    R      ADD    A,#ascii
+0052 F8             MOV    R0,A
+0053 7900    R      MOV    R1,#data_count
+0055 E7             MOV    A,@R1
+0056 07             INC    @R1
+0057 2400    R      ADD    A,#ascii_frame
+0059 F9             MOV    R1,A
+005A E6             MOV    A,@R0
+005B F7             MOV    @R1,A
+                                           ; SOURCE LINE # 182 
+005C EF             MOV    A,R7
+005D 1F             DEC    R7
+005E 70EB           JNZ    ?FOR19
+0060 1E             DEC    R6
+0061 80E8           SJMP   ?FOR19
+0063         ?NXT54:
+                                           ; SOURCE LINE # 186 
+0063 120000  R      LCALL  gen_lrc
+                                           ; SOURCE LINE # 188 
+0066 020000  R      LJMP   tx_assci_frame
+
+            ; FUNCTION _ReadHoldingRegisters_03 (END)
+
+            ; FUNCTION _ReadInputRegisters_04 (BEGIN)
+              ; Register R7 is assigned to parameter dir
+                                           ; SOURCE LINE # 192 
+0000 8C00    R      MOV    start,R4
+0002 8D00    R      MOV    start+01H,R5
+0004 8A00    R      MOV    cant,R2
+0006 8B00    R      MOV    cant+01H,R3
+              ; R2R3 is assigned to i
+                                           ; SOURCE LINE # 196 
+0008 120000  R      LCALL  gen_start
+                                           ; SOURCE LINE # 197 
+000B 120000  R      LCALL  _gen_dir
+                                           ; SOURCE LINE # 198 
+000E 7F04           MOV    R7,#004H
+0010 120000  R      LCALL  _gen_function
+                                           ; SOURCE LINE # 199 
+0013 7900    R      MOV    R1,#data_count
+0015 7705           MOV    @R1,#005H
+                                           ; SOURCE LINE # 201 
+0017 E500    R      MOV    A,start+01H
+0019 24FF           ADD    A,#0FFH
+001B FF             MOV    R7,A
+001C E500    R      MOV    A,start
+001E 34FF           ADDC   A,#0FFH
+0020 FE             MOV    R6,A
+0021 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 202 
+0024 E4             CLR    A
+0025 FE             MOV    R6,A
+0026 7F03           MOV    R7,#003H
+0028         ?FOR22:
+0028 EE             MOV    A,R6
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE 13
+
+0029 20E714         JB     ACC.7,?NXT60
+                                           ; SOURCE LINE # 204 
+002C EF             MOV    A,R7
+002D 2400    R      ADD    A,#ascii
+002F F8             MOV    R0,A
+0030 7900    R      MOV    R1,#data_count
+0032 E7             MOV    A,@R1
+0033 07             INC    @R1
+0034 2400    R      ADD    A,#ascii_frame
+0036 F9             MOV    R1,A
+0037 E6             MOV    A,@R0
+0038 F7             MOV    @R1,A
+                                           ; SOURCE LINE # 202 
+0039 EF             MOV    A,R7
+003A 1F             DEC    R7
+003B 70EB           JNZ    ?FOR22
+003D 1E             DEC    R6
+003E 80E8           SJMP   ?FOR22
+0040         ?NXT60:
+                                           ; SOURCE LINE # 207 
+0040 AE00    R      MOV    R6,cant
+0042 AF00    R      MOV    R7,cant+01H
+0044 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 208 
+0047 E4             CLR    A
+0048 FE             MOV    R6,A
+0049 7F03           MOV    R7,#003H
+004B         ?FOR23:
+004B EE             MOV    A,R6
+004C 20E714         JB     ACC.7,?NXT62
+                                           ; SOURCE LINE # 210 
+004F EF             MOV    A,R7
+0050 2400    R      ADD    A,#ascii
+0052 F8             MOV    R0,A
+0053 7900    R      MOV    R1,#data_count
+0055 E7             MOV    A,@R1
+0056 07             INC    @R1
+0057 2400    R      ADD    A,#ascii_frame
+0059 F9             MOV    R1,A
+005A E6             MOV    A,@R0
+005B F7             MOV    @R1,A
+                                           ; SOURCE LINE # 208 
+005C EF             MOV    A,R7
+005D 1F             DEC    R7
+005E 70EB           JNZ    ?FOR23
+0060 1E             DEC    R6
+0061 80E8           SJMP   ?FOR23
+0063         ?NXT62:
+                                           ; SOURCE LINE # 212 
+0063 120000  R      LCALL  gen_lrc
+                                           ; SOURCE LINE # 214 
+0066 020000  R      LJMP   tx_assci_frame
+
+            ; FUNCTION _ReadInputRegisters_04 (END)
+
+            ; FUNCTION _ForceSingleCoil_05 (BEGIN)
+              ; Register R7 is assigned to parameter dir
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE 14
+
+                                           ; SOURCE LINE # 217 
+0000 8C00    R      MOV    coilID,R4
+0002 8D00    R      MOV    coilID+01H,R5
+0004 8B00    R      MOV    value,R3
+              ; R2R3 is assigned to i
+                                           ; SOURCE LINE # 221 
+0006 120000  R      LCALL  gen_start
+                                           ; SOURCE LINE # 222 
+0009 120000  R      LCALL  _gen_dir
+                                           ; SOURCE LINE # 223 
+000C 7F05           MOV    R7,#005H
+000E 120000  R      LCALL  _gen_function
+                                           ; SOURCE LINE # 224 
+0011 7900    R      MOV    R1,#data_count
+0013 7705           MOV    @R1,#005H
+                                           ; SOURCE LINE # 226 
+0015 E500    R      MOV    A,coilID+01H
+0017 24FF           ADD    A,#0FFH
+0019 FF             MOV    R7,A
+001A E500    R      MOV    A,coilID
+001C 34FF           ADDC   A,#0FFH
+001E FE             MOV    R6,A
+001F 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 227 
+0022 E4             CLR    A
+0023 FE             MOV    R6,A
+0024 7F03           MOV    R7,#003H
+0026         ?FOR26:
+0026 EE             MOV    A,R6
+0027 20E714         JB     ACC.7,?NXT69
+                                           ; SOURCE LINE # 229 
+002A EF             MOV    A,R7
+002B 2400    R      ADD    A,#ascii
+002D F8             MOV    R0,A
+002E 7900    R      MOV    R1,#data_count
+0030 E7             MOV    A,@R1
+0031 07             INC    @R1
+0032 2400    R      ADD    A,#ascii_frame
+0034 F9             MOV    R1,A
+0035 E6             MOV    A,@R0
+0036 F7             MOV    @R1,A
+                                           ; SOURCE LINE # 227 
+0037 EF             MOV    A,R7
+0038 1F             DEC    R7
+0039 70EB           JNZ    ?FOR26
+003B 1E             DEC    R6
+003C 80E8           SJMP   ?FOR26
+003E         ?NXT69:
+                                           ; SOURCE LINE # 232 
+003E E500    R      MOV    A,value
+0040 B40001         CJNE   A,#000H,?LAB92
+0043 D3             SETB   C
+0044         ?LAB92:
+0044 4009           JC     ?ELSE11
+                                           ; SOURCE LINE # 234 
+0046 7EFF           MOV    R6,#0FFH
+0048 E4             CLR    A
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE 15
+
+0049 FF             MOV    R7,A
+004A 120000  R      LCALL  _TwoByteToAscii
+004D 8006           SJMP   ?NXT71
+004F         ?ELSE11:
+                                           ; SOURCE LINE # 238 
+004F E4             CLR    A
+0050 FE             MOV    R6,A
+0051 FF             MOV    R7,A
+0052 120000  R      LCALL  _TwoByteToAscii
+0055         ?NXT71:
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 241 
+0055 E4             CLR    A
+0056 FE             MOV    R6,A
+0057 7F03           MOV    R7,#003H
+0059         ?FOR27:
+0059 EE             MOV    A,R6
+005A 20E714         JB     ACC.7,?NXT72
+                                           ; SOURCE LINE # 243 
+005D EF             MOV    A,R7
+005E 2400    R      ADD    A,#ascii
+0060 F8             MOV    R0,A
+0061 7900    R      MOV    R1,#data_count
+0063 E7             MOV    A,@R1
+0064 07             INC    @R1
+0065 2400    R      ADD    A,#ascii_frame
+0067 F9             MOV    R1,A
+0068 E6             MOV    A,@R0
+0069 F7             MOV    @R1,A
+                                           ; SOURCE LINE # 241 
+006A EF             MOV    A,R7
+006B 1F             DEC    R7
+006C 70EB           JNZ    ?FOR27
+006E 1E             DEC    R6
+006F 80E8           SJMP   ?FOR27
+0071         ?NXT72:
+                                           ; SOURCE LINE # 246 
+0071 120000  R      LCALL  gen_lrc
+                                           ; SOURCE LINE # 248 
+0074 020000  R      LJMP   tx_assci_frame
+
+            ; FUNCTION _ForceSingleCoil_05 (END)
+
+            ; FUNCTION _PresetSingleRegister_06 (BEGIN)
+              ; Register R7 is assigned to parameter dir
+                                           ; SOURCE LINE # 251 
+0000 8C00    R      MOV    registerID,R4
+0002 8D00    R      MOV    registerID+01H,R5
+0004 8A00    R      MOV    value,R2
+0006 8B00    R      MOV    value+01H,R3
+              ; R2R3 is assigned to i
+                                           ; SOURCE LINE # 255 
+0008 120000  R      LCALL  gen_start
+                                           ; SOURCE LINE # 256 
+000B 120000  R      LCALL  _gen_dir
+                                           ; SOURCE LINE # 257 
+000E 7F06           MOV    R7,#006H
+0010 120000  R      LCALL  _gen_function
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE 16
+
+                                           ; SOURCE LINE # 258 
+0013 7900    R      MOV    R1,#data_count
+0015 7705           MOV    @R1,#005H
+                                           ; SOURCE LINE # 260 
+0017 E500    R      MOV    A,registerID+01H
+0019 24FF           ADD    A,#0FFH
+001B FF             MOV    R7,A
+001C E500    R      MOV    A,registerID
+001E 34FF           ADDC   A,#0FFH
+0020 FE             MOV    R6,A
+0021 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 261 
+0024 E4             CLR    A
+0025 FE             MOV    R6,A
+0026 7F03           MOV    R7,#003H
+0028         ?FOR30:
+0028 EE             MOV    A,R6
+0029 20E714         JB     ACC.7,?NXT78
+                                           ; SOURCE LINE # 263 
+002C EF             MOV    A,R7
+002D 2400    R      ADD    A,#ascii
+002F F8             MOV    R0,A
+0030 7900    R      MOV    R1,#data_count
+0032 E7             MOV    A,@R1
+0033 07             INC    @R1
+0034 2400    R      ADD    A,#ascii_frame
+0036 F9             MOV    R1,A
+0037 E6             MOV    A,@R0
+0038 F7             MOV    @R1,A
+                                           ; SOURCE LINE # 261 
+0039 EF             MOV    A,R7
+003A 1F             DEC    R7
+003B 70EB           JNZ    ?FOR30
+003D 1E             DEC    R6
+003E 80E8           SJMP   ?FOR30
+0040         ?NXT78:
+                                           ; SOURCE LINE # 266 
+0040 AE00    R      MOV    R6,value
+0042 AF00    R      MOV    R7,value+01H
+0044 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 267 
+0047 E4             CLR    A
+0048 FE             MOV    R6,A
+0049 7F03           MOV    R7,#003H
+004B         ?FOR31:
+004B EE             MOV    A,R6
+004C 20E714         JB     ACC.7,?NXT80
+                                           ; SOURCE LINE # 269 
+004F EF             MOV    A,R7
+0050 2400    R      ADD    A,#ascii
+0052 F8             MOV    R0,A
+0053 7900    R      MOV    R1,#data_count
+0055 E7             MOV    A,@R1
+0056 07             INC    @R1
+0057 2400    R      ADD    A,#ascii_frame
+0059 F9             MOV    R1,A
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE 17
+
+005A E6             MOV    A,@R0
+005B F7             MOV    @R1,A
+                                           ; SOURCE LINE # 267 
+005C EF             MOV    A,R7
+005D 1F             DEC    R7
+005E 70EB           JNZ    ?FOR31
+0060 1E             DEC    R6
+0061 80E8           SJMP   ?FOR31
+0063         ?NXT80:
+                                           ; SOURCE LINE # 272 
+0063 120000  R      LCALL  gen_lrc
+                                           ; SOURCE LINE # 274 
+0066 020000  R      LJMP   tx_assci_frame
+
+            ; FUNCTION _PresetSingleRegister_06 (END)
+
+            ; FUNCTION _ForceMultipleCoils_15 (BEGIN)
+              ; Register R7 is assigned to parameter dir
+                                           ; SOURCE LINE # 277 
+0000 8C00    R      MOV    start,R4
+0002 8D00    R      MOV    start+01H,R5
+0004 8A00    R      MOV    cant,R2
+0006 8B00    R      MOV    cant+01H,R3
+              ; R2R3 is assigned to i
+                                           ; SOURCE LINE # 281 
+0008 120000  R      LCALL  gen_start
+                                           ; SOURCE LINE # 282 
+000B 120000  R      LCALL  _gen_dir
+                                           ; SOURCE LINE # 283 
+000E 7F0F           MOV    R7,#00FH
+0010 120000  R      LCALL  _gen_function
+                                           ; SOURCE LINE # 284 
+0013 7900    R      MOV    R1,#data_count
+0015 7705           MOV    @R1,#005H
+                                           ; SOURCE LINE # 286 
+0017 E500    R      MOV    A,start+01H
+0019 24FF           ADD    A,#0FFH
+001B FF             MOV    R7,A
+001C E500    R      MOV    A,start
+001E 34FF           ADDC   A,#0FFH
+0020 FE             MOV    R6,A
+0021 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 287 
+0024 E4             CLR    A
+0025 FE             MOV    R6,A
+0026 7F03           MOV    R7,#003H
+0028         ?FOR35:
+0028 EE             MOV    A,R6
+0029 20E714         JB     ACC.7,?NXT88
+                                           ; SOURCE LINE # 289 
+002C EF             MOV    A,R7
+002D 2400    R      ADD    A,#ascii
+002F F8             MOV    R0,A
+0030 7900    R      MOV    R1,#data_count
+0032 E7             MOV    A,@R1
+0033 07             INC    @R1
+0034 2400    R      ADD    A,#ascii_frame
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE 18
+
+0036 F9             MOV    R1,A
+0037 E6             MOV    A,@R0
+0038 F7             MOV    @R1,A
+                                           ; SOURCE LINE # 287 
+0039 EF             MOV    A,R7
+003A 1F             DEC    R7
+003B 70EB           JNZ    ?FOR35
+003D 1E             DEC    R6
+003E 80E8           SJMP   ?FOR35
+0040         ?NXT88:
+                                           ; SOURCE LINE # 292 
+0040 AE00    R      MOV    R6,cant
+0042 AF00    R      MOV    R7,cant+01H
+0044 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 293 
+0047 E4             CLR    A
+0048 FE             MOV    R6,A
+0049 7F03           MOV    R7,#003H
+004B         ?FOR36:
+004B EE             MOV    A,R6
+004C 20E714         JB     ACC.7,?NXT90
+                                           ; SOURCE LINE # 295 
+004F EF             MOV    A,R7
+0050 2400    R      ADD    A,#ascii
+0052 F8             MOV    R0,A
+0053 7900    R      MOV    R1,#data_count
+0055 E7             MOV    A,@R1
+0056 07             INC    @R1
+0057 2400    R      ADD    A,#ascii_frame
+0059 F9             MOV    R1,A
+005A E6             MOV    A,@R0
+005B F7             MOV    @R1,A
+                                           ; SOURCE LINE # 293 
+005C EF             MOV    A,R7
+005D 1F             DEC    R7
+005E 70EB           JNZ    ?FOR36
+0060 1E             DEC    R6
+0061 80E8           SJMP   ?FOR36
+0063         ?NXT90:
+                                           ; SOURCE LINE # 298 
+0063 AF00    R      MOV    R7,byte_count
+0065 120000  R      LCALL  _ByteToAscii
+                                           ; SOURCE LINE # 299 
+0068 7900    R      MOV    R1,#data_count
+006A E7             MOV    A,@R1
+006B 07             INC    @R1
+006C 2400    R      ADD    A,#ascii_frame
+006E F8             MOV    R0,A
+006F A600    R      MOV    @R0,ascii
+                                           ; SOURCE LINE # 300 
+0071 E7             MOV    A,@R1
+0072 07             INC    @R1
+0073 2400    R      ADD    A,#ascii_frame
+0075 F8             MOV    R0,A
+0076 A600    R      MOV    @R0,ascii+01H
+                                           ; SOURCE LINE # 302 
+0078 E4             CLR    A
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:23  PAGE 19
+
+0079 F500    R      MOV    i,A
+007B F500    R      MOV    i+01H,A
+007D         ?FOR37:
+007D E500    R      MOV    A,i
+007F 6480           XRL    A,#080H
+0081 B48005         CJNE   A,#080H,?LAB110
+0084 E500    R      MOV    A,i+01H
+0086 B50000  R      CJNE   A,byte_count,?LAB110
+0089         ?LAB110:
+0089 5027           JNC    ?NXT92
+                                           ; SOURCE LINE # 304 
+008B E500    R      MOV    A,i+01H
+008D 2500    R      ADD    A,i+01H
+008F 2400    R      ADD    A,#parameters
+0091 F8             MOV    R0,A
+0092 08             INC    R0
+0093 8607           MOV    AR7,@R0
+0095 120000  R      LCALL  _ByteToAscii
+                                           ; SOURCE LINE # 305 
+0098 7900    R      MOV    R1,#data_count
+009A E7             MOV    A,@R1
+009B 07             INC    @R1
+009C 2400    R      ADD    A,#ascii_frame
+009E F8             MOV    R0,A
+009F A600    R      MOV    @R0,ascii
+                                           ; SOURCE LINE # 306 
+00A1 E7             MOV    A,@R1
+00A2 07             INC    @R1
+00A3 2400    R      ADD    A,#ascii_frame
+00A5 F8             MOV    R0,A
+00A6 A600    R      MOV    @R0,ascii+01H
+                                           ; SOURCE LINE # 302 
+00A8 0500    R      INC    i+01H
+00AA E500    R      MOV    A,i+01H
+00AC 70CF           JNZ    ?FOR37
+00AE 0500    R      INC    i
+00B0 80CB           SJMP   ?FOR37
+00B2         ?NXT92:
+                                           ; SOURCE LINE # 309 
+00B2 120000  R      LCALL  gen_lrc
+                                           ; SOURCE LINE # 311 
+00B5 020000  R      LJMP   tx_assci_frame
+
+            ; FUNCTION _ForceMultipleCoils_15 (END)
+
+            ; FUNCTION _PresetMultipleRegisters_16 (BEGIN)
+              ; Register R7 is assigned to parameter dir
+                                           ; SOURCE LINE # 314 
+0000 8C00    R      MOV    start,R4
+0002 8D00    R      MOV    start+01H,R5
+0004 8A00    R      MOV    cant,R2
+0006 8B00    R      MOV    cant+01H,R3
+              ; R2R3 is assigned to i
+                                           ; SOURCE LINE # 318 
+0008 120000  R      LCALL  gen_start
+                                           ; SOURCE LINE # 319 
+000B 120000  R      LCALL  _gen_dir
+                                           ; SOURCE LINE # 320 
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:24  PAGE 20
+
+000E 7F10           MOV    R7,#010H
+0010 120000  R      LCALL  _gen_function
+                                           ; SOURCE LINE # 321 
+0013 7900    R      MOV    R1,#data_count
+0015 7705           MOV    @R1,#005H
+                                           ; SOURCE LINE # 323 
+0017 E500    R      MOV    A,start+01H
+0019 24FF           ADD    A,#0FFH
+001B FF             MOV    R7,A
+001C E500    R      MOV    A,start
+001E 34FF           ADDC   A,#0FFH
+0020 FE             MOV    R6,A
+0021 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 324 
+0024 E4             CLR    A
+0025 FE             MOV    R6,A
+0026 7F03           MOV    R7,#003H
+0028         ?FOR41:
+0028 EE             MOV    A,R6
+0029 20E714         JB     ACC.7,?NXT100
+                                           ; SOURCE LINE # 326 
+002C EF             MOV    A,R7
+002D 2400    R      ADD    A,#ascii
+002F F8             MOV    R0,A
+0030 7900    R      MOV    R1,#data_count
+0032 E7             MOV    A,@R1
+0033 07             INC    @R1
+0034 2400    R      ADD    A,#ascii_frame
+0036 F9             MOV    R1,A
+0037 E6             MOV    A,@R0
+0038 F7             MOV    @R1,A
+                                           ; SOURCE LINE # 324 
+0039 EF             MOV    A,R7
+003A 1F             DEC    R7
+003B 70EB           JNZ    ?FOR41
+003D 1E             DEC    R6
+003E 80E8           SJMP   ?FOR41
+0040         ?NXT100:
+                                           ; SOURCE LINE # 329 
+0040 AE00    R      MOV    R6,cant
+0042 AF00    R      MOV    R7,cant+01H
+0044 120000  R      LCALL  _TwoByteToAscii
+              ; R6R7 is assigned to i
+                                           ; SOURCE LINE # 330 
+0047 E4             CLR    A
+0048 FE             MOV    R6,A
+0049 7F03           MOV    R7,#003H
+004B         ?FOR42:
+004B EE             MOV    A,R6
+004C 20E714         JB     ACC.7,?NXT102
+                                           ; SOURCE LINE # 332 
+004F EF             MOV    A,R7
+0050 2400    R      ADD    A,#ascii
+0052 F8             MOV    R0,A
+0053 7900    R      MOV    R1,#data_count
+0055 E7             MOV    A,@R1
+0056 07             INC    @R1
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:24  PAGE 21
+
+0057 2400    R      ADD    A,#ascii_frame
+0059 F9             MOV    R1,A
+005A E6             MOV    A,@R0
+005B F7             MOV    @R1,A
+                                           ; SOURCE LINE # 330 
+005C EF             MOV    A,R7
+005D 1F             DEC    R7
+005E 70EB           JNZ    ?FOR42
+0060 1E             DEC    R6
+0061 80E8           SJMP   ?FOR42
+0063         ?NXT102:
+                                           ; SOURCE LINE # 335 
+0063 E500    R      MOV    A,byte_count
+0065 25E0           ADD    A,ACC
+0067 FF             MOV    R7,A
+0068 120000  R      LCALL  _ByteToAscii
+                                           ; SOURCE LINE # 336 
+006B 7900    R      MOV    R1,#data_count
+006D E7             MOV    A,@R1
+006E 07             INC    @R1
+006F 2400    R      ADD    A,#ascii_frame
+0071 F8             MOV    R0,A
+0072 A600    R      MOV    @R0,ascii
+                                           ; SOURCE LINE # 337 
+0074 E7             MOV    A,@R1
+0075 07             INC    @R1
+0076 2400    R      ADD    A,#ascii_frame
+0078 F8             MOV    R0,A
+0079 A600    R      MOV    @R0,ascii+01H
+                                           ; SOURCE LINE # 339 
+007B E4             CLR    A
+007C F500    R      MOV    i,A
+007E F500    R      MOV    i+01H,A
+0080         ?FOR43:
+0080 E500    R      MOV    A,i
+0082 6480           XRL    A,#080H
+0084 B48005         CJNE   A,#080H,?LAB122
+0087 E500    R      MOV    A,i+01H
+0089 B50000  R      CJNE   A,byte_count,?LAB122
+008C         ?LAB122:
+008C 5037           JNC    ?NXT104
+                                           ; SOURCE LINE # 341 
+008E E500    R      MOV    A,i+01H
+0090 2500    R      ADD    A,i+01H
+0092 2400    R      ADD    A,#parameters
+0094 F8             MOV    R0,A
+0095 8606           MOV    AR6,@R0
+0097 08             INC    R0
+0098 8607           MOV    AR7,@R0
+009A 120000  R      LCALL  _TwoByteToAscii
+                                           ; SOURCE LINE # 343 
+009D 7900    R      MOV    R1,#data_count
+009F E7             MOV    A,@R1
+00A0 07             INC    @R1
+00A1 2400    R      ADD    A,#ascii_frame
+00A3 F8             MOV    R0,A
+00A4 A600    R      MOV    @R0,ascii+03H
+                                           ; SOURCE LINE # 344 
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:24  PAGE 22
+
+00A6 E7             MOV    A,@R1
+00A7 07             INC    @R1
+00A8 2400    R      ADD    A,#ascii_frame
+00AA F8             MOV    R0,A
+00AB A600    R      MOV    @R0,ascii+02H
+                                           ; SOURCE LINE # 345 
+00AD E7             MOV    A,@R1
+00AE 07             INC    @R1
+00AF 2400    R      ADD    A,#ascii_frame
+00B1 F8             MOV    R0,A
+00B2 A600    R      MOV    @R0,ascii+01H
+                                           ; SOURCE LINE # 346 
+00B4 E7             MOV    A,@R1
+00B5 07             INC    @R1
+00B6 2400    R      ADD    A,#ascii_frame
+00B8 F8             MOV    R0,A
+00B9 A600    R      MOV    @R0,ascii
+                                           ; SOURCE LINE # 339 
+00BB 0500    R      INC    i+01H
+00BD E500    R      MOV    A,i+01H
+00BF 70BF           JNZ    ?FOR43
+00C1 0500    R      INC    i
+00C3 80BB           SJMP   ?FOR43
+00C5         ?NXT104:
+                                           ; SOURCE LINE # 349 
+00C5 120000  R      LCALL  gen_lrc
+                                           ; SOURCE LINE # 351 
+00C8 020000  R      LJMP   tx_assci_frame
+
+            ; FUNCTION _PresetMultipleRegisters_16 (END)
+
+            ; FUNCTION Serial_Init (BEGIN)
+                                           ; SOURCE LINE # 13 
+0000 C2A7           CLR    RS485En
+                                           ; SOURCE LINE # 15 
+0002 758920         MOV    TMOD,#020H
+                                           ; SOURCE LINE # 16 
+0005 758DF4         MOV    TH1,#0F4H
+                                           ; SOURCE LINE # 17 
+0008 758BF4         MOV    TL1,#0F4H
+                                           ; SOURCE LINE # 18 
+000B D28E           SETB   TR1
+                                           ; SOURCE LINE # 19 
+000D 759850         MOV    SCON,#050H
+                                           ; SOURCE LINE # 21 
+0010 D2AC           SETB   ES
+                                           ; SOURCE LINE # 22 
+0012 22             RET    
+
+            ; FUNCTION Serial_Init (END)
+
+            ; FUNCTION _delay_ms (BEGIN)
+              ; Register R6R7 is assigned to parameter d
+              ; R4R5 is assigned to k
+                                           ; SOURCE LINE # 27 
+0000 E4             CLR    A
+0001 F500    R      MOV    s,A
+0003 F500    R      MOV    s+01H,A
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:24  PAGE 23
+
+                                           ; SOURCE LINE # 28 
+0005 F500    R      MOV    k,A
+0007 F500    R      MOV    k+01H,A
+0009         ?FOR45:
+0009 E500    R      MOV    A,k
+000B B50605         CJNE   A,AR6,?LAB133
+000E E500    R      MOV    A,k+01H
+0010 B50700         CJNE   A,AR7,?LAB133
+0013         ?LAB133:
+0013 5012           JNC    ?NXT108
+                                           ; SOURCE LINE # 30 
+0015 0500    R      INC    s+01H
+0017 E500    R      MOV    A,s+01H
+0019 7002           JNZ    ?NXT109
+001B 0500    R      INC    s
+001D         ?NXT109:
+                                           ; SOURCE LINE # 28 
+001D 0500    R      INC    k+01H
+001F E500    R      MOV    A,k+01H
+0021 70E6           JNZ    ?FOR45
+0023 0500    R      INC    k
+0025 80E2           SJMP   ?FOR45
+0027         ?NXT108:
+                                           ; SOURCE LINE # 32 
+0027 22             RET    
+
+            ; FUNCTION _delay_ms (END)
+
+            ; FUNCTION _tx_byte (BEGIN)
+              ; Register R7 is assigned to parameter byte
+                                           ; SOURCE LINE # 35 
+0000 C299           CLR    TI
+                                           ; SOURCE LINE # 36 
+0002 C29B           CLR    TB8
+                                           ; SOURCE LINE # 37 
+0004 8F99           MOV    SBUF,R7
+0006         ?WHILE7:
+                                           ; SOURCE LINE # 38 
+0006 3099FD         JNB    TI,?WHILE7
+                                           ; SOURCE LINE # 39 
+0009 22             RET    
+
+            ; FUNCTION _tx_byte (END)
+
+            ; FUNCTION SerialPortInt (BEGIN)
+                                           ; SOURCE LINE # 41 
+0000 C0E0           PUSH   ACC
+0002 C0F0           PUSH   B
+0004 C0D0           PUSH   PSW
+0006 C000           PUSH   AR0
+0008 C001           PUSH   AR1
+000A C006           PUSH   AR6
+000C C007           PUSH   AR7
+                                           ; SOURCE LINE # 43 
+000E 309937         JNB    TI,?ELSE16
+                                           ; SOURCE LINE # 45 
+0011 C299           CLR    TI
+                                           ; SOURCE LINE # 46 
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:24  PAGE 25
+
+0013 20A70F         JB     RS485En,?NXT118
+0016         ?NXT119:
+                                           ; SOURCE LINE # 62 
+0016 D007           POP    AR7
+0018 D006           POP    AR6
+001A D001           POP    AR1
+001C D000           POP    AR0
+001E D0D0           POP    PSW
+0020 D0F0           POP    B
+0022 D0E0           POP    ACC
+                                           ; SOURCE LINE # 64 
+0024 32             RETI   
+0025         ?NXT118:
+                                           ; SOURCE LINE # 48 
+0025 7900    R      MOV    R1,#data_count
+0027 87F0           MOV    B,@R1
+0029 7800    R      MOV    R0,#send_count
+002B E6             MOV    A,@R0
+002C B5F000         CJNE   A,B,?LAB145
+002F         ?LAB145:
+002F 5012           JNC    ?ELSE18
+                                           ; SOURCE LINE # 50 
+0031 E4             CLR    A
+0032 FE             MOV    R6,A
+0033 7F64           MOV    R7,#064H
+0035 120000  R      LCALL  _delay_ms
+                                           ; SOURCE LINE # 51 
+0038 8607           MOV    AR7,@R0
+003A EF             MOV    A,R7
+003B 06             INC    @R0
+003C 2400    R      ADD    A,#ascii_frame
+003E F8             MOV    R0,A
+003F 8699           MOV    SBUF,@R0
+0041 800A           SJMP   ?NXT117
+0043         ?ELSE18:
+                                           ; SOURCE LINE # 56 
+0043 120000  R      LCALL  clear_frame
+0046 80CE           SJMP   ?NXT119
+0048         ?ELSE16:
+                                           ; SOURCE LINE # 60 
+0048 3098CB         JNB    RI,?NXT119
+                                           ; SOURCE LINE # 62 
+004B C298           CLR    RI
+004D         ?NXT117:
+004D 80C7           SJMP   ?NXT119
+
+            ; FUNCTION SerialPortInt (END)
+
+            ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 68 
+0000 120000  R      LCALL  Serial_Init
+                                           ; SOURCE LINE # 70 
+0003 E4             CLR    A
+0004 F500    R      MOV    word,A
+0006 F500    R      MOV    word+01H,A
+                                           ; SOURCE LINE # 71 
+0008 D2AF           SETB   EA
+                                           ; SOURCE LINE # 72 
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:24  PAGE 26
+
+000A 7E86           MOV    R6,#086H
+000C 7FA0           MOV    R7,#0A0H
+000E 120000  R      LCALL  _delay_ms
+0011         ?WHILE9:
+                                           ; SOURCE LINE # 76 
+0011 7F05           MOV    R7,#005H
+0013 E4             CLR    A
+0014 FC             MOV    R4,A
+0015 7D01           MOV    R5,#001H
+0017 AA00    R      MOV    R2,word
+0019 AB00    R      MOV    R3,word+01H
+001B 120000  R      LCALL  _PresetSingleRegister_06
+                                           ; SOURCE LINE # 77 
+001E 0500    R      INC    word+01H
+0020 E500    R      MOV    A,word+01H
+0022 7002           JNZ    ?LAB150
+0024 0500    R      INC    word
+0026         ?LAB150:
+                                           ; SOURCE LINE # 78 
+0026 6414           XRL    A,#014H
+0028 4500    R      ORL    A,word
+002A 7005           JNZ    ?NXT126
+002C E4             CLR    A
+002D F500    R      MOV    word,A
+002F F500    R      MOV    word+01H,A
+0031         ?NXT126:
+                                           ; SOURCE LINE # 80 
+0031 7E86           MOV    R6,#086H
+0033 7FA0           MOV    R7,#0A0H
+0035 120000  R      LCALL  _delay_ms
+                                           ; SOURCE LINE # 86 
+0038 E500    R      MOV    A,coil
+003A 4500    R      ORL    A,coil+01H
+003C 7008           JNZ    ?ELSE23
+003E E4             CLR    A
+003F F500    R      MOV    coil,A
+0041 750001  R      MOV    coil+01H,#001H
+0044 8005           SJMP   ?NXT127
+0046         ?ELSE23:
+                                           ; SOURCE LINE # 87 
+0046 E4             CLR    A
+0047 F500    R      MOV    coil,A
+0049 F500    R      MOV    coil+01H,A
+004B         ?NXT127:
+                                           ; SOURCE LINE # 89 
+004B 7E86           MOV    R6,#086H
+004D 7FA0           MOV    R7,#0A0H
+004F 120000  R      LCALL  _delay_ms
+                                           ; SOURCE LINE # 90 
+0052 7F05           MOV    R7,#005H
+0054 E4             CLR    A
+0055 FC             MOV    R4,A
+0056 7D02           MOV    R5,#002H
+0058 FA             MOV    R2,A
+0059 7B05           MOV    R3,#005H
+005B 120000  R      LCALL  _PresetSingleRegister_06
+                                           ; SOURCE LINE # 93 
+005E 7E86           MOV    R6,#086H
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:24  PAGE 27
+
+0060 7FA0           MOV    R7,#0A0H
+0062 120000  R      LCALL  _delay_ms
+0065 80AA           SJMP   ?WHILE9
+
+            ; FUNCTION main (END)
+
+RC51 COMPILER V03.08.10.309,  MAIN               06/23/15  22:21:24  PAGE 29
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1658    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     15      33
+   IDATA SIZE       =     82    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+RC51 COMPILATION COMPLETE.  1 WARNING,  0 ERROR

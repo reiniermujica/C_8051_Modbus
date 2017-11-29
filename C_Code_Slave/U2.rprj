@@ -1,0 +1,4 @@
+
+<Project Header="Project 'U2'" Path=".\U2.rprj" Project="Yes" AsyncBuild="" OutputFile="" sate="96" ActiveApp="U2" >
+	<ApplicationBuild Header="U2" Extern=".\U2.rapp" Path=".\U2.rapp" AsyncBuild="" OutputFile=".\U2.aof" sate="96" />
+</Project>

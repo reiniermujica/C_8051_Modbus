@@ -1,0 +1,1163 @@
+LX51 CODE BANKING LINKER/LOCATOR V05.08.10.309                                 06/23/15  22:20:55
+MS-DOS LX51 CODE BANKING LINKER/LOCATOR V05.08.10.309,  INVOKED BY:
+C:\Program Files (x86)\Raisonance\Ride\Bin\LX51.EXE F:\Reinier\Estudio\TESIS\PROTEUS\Cap03\C_Code&
+_Slave\main.obj TO(F:\Reinier\Estudio\TESIS\PROTEUS\Cap03\C_Code_Slave\U2.aof) LIBPATH(C:\Program&
+ Files (x86)\Raisonance\Ride\Lib\51) GENERATEDEPFILE MAP IX RS(256) RSI(128) CSIZE(65536) XSIZE(6&
+5536) DEFN(XSTACKLEN,256) DEFN(TIM1_INIT,E8h) CO(0) DT(0) ID(0) XD(0) BI(0) ABSCODEOFFS(0) XMLM(N&
+o,F:\Reinier\Estudio\TESIS\PROTEUS\Cap03\C_Code_Slave\U2-modules.Standard.xml) XMLF(No,8000,F:\Re&
+inier\Estudio\TESIS\PROTEUS\Cap03\C_Code_Slave\U2-flash.Standard.xml) XML(F:\Reinier\Estudio\TESI&
+S\PROTEUS\Cap03\C_Code_Slave\U2.Standard.xml) XMLRIDE(F:\Reinier\Estudio\TESIS\PROTEUS\Cap03\C_Co&
+de_Slave\U2-globals.Standard.xml) 
+
+
+MEMORY MODEL: SMALL WITHOUT ANY FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED
+  F:\REINIER\ESTUDIO\TESIS\PROTEUS\CAP03\C_CODE_SLAVE\MAIN.OBJ(MAIN)
+  C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB(C1S)
+  C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB(MULS)
+  C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB(DIVS)
+  C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB(CMPL)
+  C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB(RSTSTK4)
+  C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB(HPD)
+  C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB(_C_INITD)
+  C:\Program Files (x86)\Raisonance\Ride\Lib\51\RC51S.LIB(_C_IDATALEN)
+
+
+LINK MAP OF MODULE: F:\REINIER\ESTUDIO\TESIS\PROTEUS\CAP03\C_CODE_SLAVE\U2.AOF (U2)
+
+    TYPE     BASE       LENGTH    RELOCATION     SEGMENT NAME
+    ----     ----       ------    ----------     ------------
+
+    * * * * * * *   DATA/IDATA    M E M O R Y   * * * * * * *
+    REG      0000H      0008H     ABSOLUTE       "REG BANK 0"
+    DATA     0008H      0018H     OVERLAID UNIT  _DGROUP02_
+             0008H      0001H     -------------  ?DT?SerialPortInt?MAIN
+             0009H      0003H     -------------  ?DT?execute_modbus_command?MAIN
+             000CH      000CH     -------------  ?DT?ResponseReadCoilsStatus_01?MAIN
+             0018H      0002H     -------------  ?DT?_GetCoilValue?MAIN
+             000CH      000CH     -------------  ?DT?ResponseReadInputStatus_02?MAIN
+             0018H      0002H     -------------  ?DT?_GetInputValue?MAIN
+             000CH      000BH     -------------  ?DT?ResponseReadHoldingRegisters_03?MAIN
+             000CH      000BH     -------------  ?DT?ResponseReadInputRegisters_04?MAIN
+             000CH      0006H     -------------  ?DT?ResponseForceSingleCoil_05?MAIN
+             000CH      0006H     -------------  ?DT?ResponsePresetSingleRegister_06?MAIN
+             0012H      0004H     -------------  ?DT?_SetHoldingRegisterValue?MAIN
+             000CH      000EH     -------------  ?DT?ResponseForceMultipleCoils_15?MAIN
+             001AH      0006H     -------------  ?DT?AsciiToTwoByte?MAIN
+             001AH      0002H     -------------  ?DT?_SetCoilValue?MAIN
+             001AH      0001H     -------------  ?DT?lrc_calc?MAIN
+             000CH      000BH     -------------  ?DT?ResponsePresetMultipleRegisters_16?MAIN
+    BIT      0020H.0    0000H.1   UNIT           ?BI?MAIN
+             0020H.1    0000H.7                  *** GAP ***
+    DATA     0021H      0015H     UNIT           ?DT?MAIN
+    DATA     0036H      0004H     OVERLAID UNIT  _DGROUP00_
+             0036H      0004H     -------------  ?DT?make_hash?MAIN
+    DATA     003AH      0004H     OVERLAID UNIT  _DGROUP03_
+             003AH      0004H     -------------  ?DT?update_display?MAIN
+             003AH      0004H     -------------  ?DT?_delay_ms?MAIN
+    IDATA    003EH      0052H     UNIT           ?ID?MAIN
+    IDATA    0090H      0029H     OVERLAID UNIT  _IGROUP02_
+             0090H      0029H     -------------  ?ID?ResponseForceMultipleCoils_15?MAIN
+             0090H      0001H     -------------  ?ID?ResponsePresetMultipleRegisters_16?MAIN
+    IDATA    00B9H      0001H     * * STACK * *  _STACK
+
+    * * * * * * *   CODE          M E M O R Y   * * * * * * *
+    CODE     0000H      0003H     ABSOLUTE       
+             0003H      0008H                    *** GAP ***
+    CODE     000BH      0003H     ABSOLUTE       
+    CODE     000EH      0010H     UNIT           ?PR?_NibbleToAscii?MAIN
+             001EH      0005H                    *** GAP ***
+    CODE     0023H      0003H     ABSOLUTE       
+    CODE     0026H      011CH     UNIT           ?PR?LIB51
+    CODE     0142H      0066H     UNIT           ?PR?C51_STARTUP?
+    CODE     01A8H      003FH     UNIT           ?PR?_GetCoilValue?MAIN
+    CODE     01E7H      0089H     UNIT           ?PR?_SetCoilValue?MAIN
+    CODE     0270H      0017H     UNIT           ?PR?_GetHoldingRegisterValue?MAIN
+    CODE     0287H      0037H     UNIT           ?PR?_SetHoldingRegisterValue?MAIN
+    CODE     02BEH      003FH     UNIT           ?PR?_GetInputValue?MAIN
+    CODE     02FDH      0017H     UNIT           ?PR?_GetInputRegisterValue?MAIN
+    CODE     0314H      002FH     UNIT           ?PR?_ByteToAscii?MAIN
+    CODE     0343H      0027H     UNIT           ?PR?_AsciiToByte?MAIN
+    CODE     036AH      004DH     UNIT           ?PR?_TwoByteToAscii?MAIN
+    CODE     03B7H      0024H     UNIT           ?PR?AsciiToTwoByte?MAIN
+    CODE     03DBH      00A6H     UNIT           ?PR?execute_modbus_command?MAIN
+    CODE     0481H      0025H     UNIT           ?PR?gen_lrc?MAIN
+    CODE     04A6H      0012H     UNIT           ?PR?clear_frame?MAIN
+    CODE     04B8H      0019H     UNIT           ?PR?tx_assci_frame?MAIN
+    CODE     04D1H      002FH     UNIT           ?PR?lrc_calc?MAIN
+    CODE     0500H      00CFH     UNIT           ?PR?ResponseReadCoilsStatus_01?MAIN
+    CODE     05CFH      00CFH     UNIT           ?PR?ResponseReadInputStatus_02?MAIN
+    CODE     069EH      00AAH     UNIT           ?PR?ResponseReadHoldingRegisters_03?MAIN
+    CODE     0748H      00AAH     UNIT           ?PR?ResponseReadInputRegisters_04?MAIN
+    CODE     07F2H      0086H     UNIT           ?PR?ResponseForceSingleCoil_05?MAIN
+    CODE     0878H      0047H     UNIT           ?PR?ResponsePresetSingleRegister_06?MAIN
+    CODE     08BFH      010BH     UNIT           ?PR?ResponseForceMultipleCoils_15?MAIN
+    CODE     09CAH      00C2H     UNIT           ?PR?ResponsePresetMultipleRegisters_16?MAIN
+    CODE     0A8CH      0031H     UNIT           ?PR?Serial_PWM_Init?MAIN
+    CODE     0ABDH      005BH     UNIT           ?PR?make_hash?MAIN
+    CODE     0B18H      0028H     UNIT           ?PR?_delay_ms?MAIN
+    CODE     0B40H      009BH     UNIT           ?PR?PWM?MAIN
+    CODE     0BDBH      00C0H     UNIT           ?PR?SerialPortInt?MAIN
+    CODE     0C9BH      0071H     UNIT           ?PR?update_display?MAIN
+    CODE     0D0CH      002CH     UNIT           ?PR?main?MAIN
+    CODE     0D38H      0011H     UNIT           _C_INITD?CD
+
+EXECUTABLE SUMMARY:
+-------------------
+    Total INTERNAL RAM storage requirement:  00B8H.1 (184.1)
+    Total EXTERNAL RAM storage requirement:  0000H (0)
+    Total     CODE     storage requirement:  0D3CH (3388)
+Note:  Summary does not include dynamic stack requirements
+
+
+REFERENCE MAP OF MODULE: F:\REINIER\ESTUDIO\TESIS\PROTEUS\CAP03\C_CODE_SLAVE\U2.AOF (U2)
+
+SEGMENT                           BI_GROUP            DT_GROUP             ID_GROUP             XD_GROUP
+  +--> CALLED SEGMENT          START    LENGTH     START    LENGTH     START    LENGTH     START    LENGTH
+--------------------------------------------------------------------------------------
+
+?PR?make_hash?MAIN             ---------------     0036H    0004H      ---------------     ---------------
+
+?PR?PWM?MAIN                   ---------------     ---------------     ---------------     ---------------
+  +--> ?PR?_GetCoilValue?MAIN
+
+?PR?_GetCoilValue?MAIN         ---------------     0018H    0002H     ---------------     ---------------
+
+?PR?SerialPortInt?MAIN         ---------------     0008H    0001H      ---------------     ---------------
+  +--> ?PR?execute_modbus_command?MAIN
+  +--> ?PR?clear_frame?MAIN
+
+?PR?execute_modbus_command?MAIN---------------     0009H    0003H     ---------------     ---------------
+  +--> ?PR?ResponseReadCoilsStatus_01?MAIN
+  +--> ?PR?ResponseReadInputStatus_02?MAIN
+  +--> ?PR?ResponseReadHoldingRegisters_03?MAIN
+  +--> ?PR?ResponseReadInputRegisters_04?MAIN
+  +--> ?PR?ResponseForceSingleCoil_05?MAIN
+  +--> ?PR?ResponsePresetSingleRegister_06?MAIN
+  +--> ?PR?ResponseForceMultipleCoils_15?MAIN
+  +--> ?PR?ResponsePresetMultipleRegisters_16?MAIN
+  +--> ?PR?clear_frame?MAIN
+  +--> ?PR?_AsciiToByte?MAIN
+  +--> ?PR?lrc_calc?MAIN
+
+?PR?ResponseReadCoilsStatus_01?MAIN---------------     000CH    000CH     ---------------     ---------------
+  +--> ?PR?AsciiToTwoByte?MAIN
+  +--> ?PR?_GetCoilValue?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+  +--> ?PR?_ByteToAscii?MAIN
+
+?PR?AsciiToTwoByte?MAIN        ---------------     001AH    0006H     ---------------     ---------------
+  +--> ?PR?_AsciiToByte?MAIN
+
+?PR?_AsciiToByte?MAIN          ---------------     ---------------     ---------------     ---------------
+
+?PR?gen_lrc?MAIN               ---------------     ---------------     ---------------     ---------------
+  +--> ?PR?lrc_calc?MAIN
+  +--> ?PR?_ByteToAscii?MAIN
+
+?PR?lrc_calc?MAIN              ---------------     001AH    0001H     ---------------     ---------------
+  +--> ?PR?_AsciiToByte?MAIN
+
+?PR?_ByteToAscii?MAIN          ---------------     ---------------     ---------------     ---------------
+
+?PR?tx_assci_frame?MAIN        ---------------     ---------------     ---------------     ---------------
+  +--> ?PR?clear_frame?MAIN
+
+?PR?clear_frame?MAIN           ---------------     ---------------     ---------------     ---------------
+
+?PR?ResponseReadInputStatus_02?MAIN---------------     000CH    000CH     ---------------     ---------------
+  +--> ?PR?_GetInputValue?MAIN
+  +--> ?PR?AsciiToTwoByte?MAIN
+  +--> ?PR?_ByteToAscii?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+
+?PR?_GetInputValue?MAIN        ---------------     0018H    0002H     ---------------     ---------------
+
+?PR?ResponseReadHoldingRegisters_03?MAIN---------------     000CH    000BH     ---------------     ---------------&
+
+  +--> ?PR?_GetHoldingRegisterValue?MAIN
+  +--> ?PR?_TwoByteToAscii?MAIN
+  +--> ?PR?AsciiToTwoByte?MAIN
+  +--> ?PR?_ByteToAscii?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+
+?PR?_GetHoldingRegisterValue?MAIN---------------     ---------------     ---------------     ---------------
+
+?PR?_TwoByteToAscii?MAIN       ---------------     ---------------     ---------------     ---------------
+  +--> ?PR?_NibbleToAscii?MAIN
+
+?PR?_NibbleToAscii?MAIN        ---------------     ---------------     ---------------     ---------------
+
+?PR?ResponseReadInputRegisters_04?MAIN---------------     000CH    000BH     ---------------     ---------------
+  +--> ?PR?_GetInputRegisterValue?MAIN
+  +--> ?PR?AsciiToTwoByte?MAIN
+  +--> ?PR?_ByteToAscii?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+  +--> ?PR?_TwoByteToAscii?MAIN
+
+?PR?_GetInputRegisterValue?MAIN---------------     ---------------     ---------------     ---------------
+
+?PR?ResponseForceSingleCoil_05?MAIN---------------     000CH    0006H     ---------------     ---------------
+  +--> ?PR?_SetCoilValue?MAIN
+  +--> ?PR?clear_frame?MAIN
+  +--> ?PR?AsciiToTwoByte?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+
+?PR?_SetCoilValue?MAIN         ---------------     001AH    0002H     ---------------     ---------------
+
+?PR?ResponsePresetSingleRegister_06?MAIN---------------     000CH    0006H     ---------------     ---------------&
+
+  +--> ?PR?_SetHoldingRegisterValue?MAIN
+  +--> ?PR?AsciiToTwoByte?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+
+?PR?_SetHoldingRegisterValue?MAIN---------------     0012H    0004H     ---------------     ---------------
+
+?PR?ResponseForceMultipleCoils_15?MAIN---------------     000CH    000EH     0090H    0029H     ---------------
+  +--> ?PR?_AsciiToByte?MAIN
+  +--> ?PR?AsciiToTwoByte?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+  +--> ?PR?_SetCoilValue?MAIN
+
+?PR?ResponsePresetMultipleRegisters_16?MAIN---------------     000CH    000BH     0090H    0001H     -------------&
+--
+  +--> ?PR?_AsciiToByte?MAIN
+  +--> ?PR?AsciiToTwoByte?MAIN
+  +--> ?PR?gen_lrc?MAIN
+  +--> ?PR?tx_assci_frame?MAIN
+
+?PR?main?MAIN                  ---------------     ---------------     ---------------     ---------------
+  +--> ?PR?Serial_PWM_Init?MAIN
+  +--> ?PR?update_display?MAIN
+  +--> ?PR?_delay_ms?MAIN
+  +--> ?PR?clear_frame?MAIN
+  +--> ?PR?_SetCoilValue?MAIN
+  +--> ?PR?_SetHoldingRegisterValue?MAIN
+
+?PR?Serial_PWM_Init?MAIN       ---------------     ---------------     ---------------     ---------------
+  +--> ?PR?_SetHoldingRegisterValue?MAIN
+
+?PR?update_display?MAIN        ---------------     003AH    0004H     ---------------     ---------------
+  +--> ?PR?_GetHoldingRegisterValue?MAIN
+
+?PR?_delay_ms?MAIN             ---------------     003AH    0004H     ---------------     ---------------
+
+SYMBOL TABLE FOR F:\REINIER\ESTUDIO\TESIS\PROTEUS\CAP03\C_CODE_SLAVE\U2.AOF(MAIN)
+----------------------------------------------------------------------------------
+
+    VALUE              TYPE               NAME
+    -----              ----               ----
+
+	-------            MODULE             main
+	C:0000H            SYMBOL             _ICE_DUMMY_
+	C:0D0CH            PUBLIC             main
+	C:0C9BH            PUBLIC             update_display
+	C:0BDBH            PUBLIC             SerialPortInt
+	C:0B40H            PUBLIC             PWM
+	C:0ABDH            PUBLIC             make_hash
+	C:0A8CH            PUBLIC             Serial_PWM_Init
+	D:0035H            PUBLIC             BUSY
+	B:00A0H            SYMBOL             ONE
+	B:00B7H            SYMBOL             EN_D
+	B:0093H            SYMBOL             LED1
+	I:0086H            PUBLIC             _7seg
+	D:0033H            PUBLIC             last_hash
+	D:0031H            PUBLIC             last_data_count
+	D:002FH            PUBLIC             sec_count
+	D:002DH            PUBLIC             led_count
+	D:002BH            PUBLIC             cant
+	D:0029H            PUBLIC             level
+	B:00C8H            SYMBOL             CP_RL2
+	B:00C9H            SYMBOL             C_T2
+	B:00CAH            SYMBOL             TR2
+	B:00CBH            SYMBOL             EXEN2
+	B:00CCH            SYMBOL             TCLK
+	B:00CDH            SYMBOL             RCLK
+	B:00CEH            SYMBOL             EXF2
+	B:00CFH            SYMBOL             TF2
+	B:0090H            SYMBOL             T2
+	B:0091H            SYMBOL             T2EX
+	B:00BDH            SYMBOL             PT2
+	B:00ADH            SYMBOL             ET2
+	B:0098H            SYMBOL             RI
+	B:009AH            SYMBOL             RB8
+	B:009CH            SYMBOL             REN
+	B:009DH            SYMBOL             SM2
+	B:009EH            SYMBOL             SM1
+	B:009FH            SYMBOL             SM0
+	B:00B0H            SYMBOL             RXD
+	B:00B1H            SYMBOL             TXD
+	B:00B2H            SYMBOL             INT0
+	B:00B3H            SYMBOL             INT1
+	B:00B4H            SYMBOL             T0
+	B:00B5H            SYMBOL             T1
+	B:00B6H            SYMBOL             WR
+	B:00B7H            SYMBOL             RD
+	B:00B8H            SYMBOL             PX0
+	B:00B9H            SYMBOL             PT0
+	B:00BAH            SYMBOL             PX1
+	B:00BBH            SYMBOL             PT1
+	B:00BCH            SYMBOL             PS
+	B:00A8H            SYMBOL             EX0
+	B:00A9H            SYMBOL             ET0
+	B:00AAH            SYMBOL             EX1
+	B:00ABH            SYMBOL             ET1
+	B:00ACH            SYMBOL             ES
+	B:00AFH            SYMBOL             EA
+	B:0088H            SYMBOL             IT0
+	B:0089H            SYMBOL             IE0
+	B:008AH            SYMBOL             IT1
+	B:008BH            SYMBOL             IE1
+	B:008CH            SYMBOL             TR0
+	B:008DH            SYMBOL             TF0
+	B:008EH            SYMBOL             TR1
+	B:008FH            SYMBOL             TF1
+	B:00D0H            SYMBOL             P
+	B:00D1H            SYMBOL             F1
+	B:00D2H            SYMBOL             OV
+	B:00D3H            SYMBOL             RS0
+	B:00D4H            SYMBOL             RS1
+	B:00D5H            SYMBOL             F0
+	B:00D6H            SYMBOL             AC
+	B:00D7H            SYMBOL             CY
+	D:00CDH            SYMBOL             TH2
+	D:00CCH            SYMBOL             TL2
+	D:00CBH            SYMBOL             RCAP2H
+	D:00CAH            SYMBOL             RCAP2L
+	D:00C8H            SYMBOL             T2CON
+	D:0098H            SYMBOL             SCON
+	D:00B8H            SYMBOL             IP
+	D:00A8H            SYMBOL             IE
+	D:008DH            SYMBOL             TH1
+	D:008CH            SYMBOL             TH0
+	D:008BH            SYMBOL             TL1
+	D:008AH            SYMBOL             TL0
+	D:0089H            SYMBOL             TMOD
+	D:0088H            SYMBOL             TCON
+	D:0087H            SYMBOL             PCON
+	D:0083H            SYMBOL             DPH
+	D:0082H            SYMBOL             DPL
+	D:0081H            SYMBOL             SP
+	D:00F0H            SYMBOL             B
+	D:00E0H            SYMBOL             ACC
+	D:00D0H            SYMBOL             PSW
+	D:00A0H            SYMBOL             P2
+	D:0090H            SYMBOL             P1
+	D:0080H            SYMBOL             P0
+	C:09CAH            PUBLIC             ResponsePresetMultipleRegisters_16
+	C:08BFH            PUBLIC             ResponseForceMultipleCoils_15
+	C:0878H            PUBLIC             ResponsePresetSingleRegister_06
+	C:07F2H            PUBLIC             ResponseForceSingleCoil_05
+	C:0748H            PUBLIC             ResponseReadInputRegisters_04
+	C:069EH            PUBLIC             ResponseReadHoldingRegisters_03
+	C:05CFH            PUBLIC             ResponseReadInputStatus_02
+	C:0500H            PUBLIC             ResponseReadCoilsStatus_01
+	C:04B8H            PUBLIC             tx_assci_frame
+	C:04D1H            PUBLIC             lrc_calc
+	C:04A6H            PUBLIC             clear_frame
+	C:0481H            PUBLIC             gen_lrc
+	C:03DBH            PUBLIC             execute_modbus_command
+	B:0000H            PUBLIC             broadcast
+	I:0085H            PUBLIC             send_count
+	I:0084H            PUBLIC             data_count
+	I:0048H            PUBLIC             ascii_frame
+	C:03B7H            PUBLIC             AsciiToTwoByte
+	C:036AH            PUBLIC             _TwoByteToAscii
+	C:0343H            PUBLIC             _AsciiToByte
+	C:000EH            PUBLIC             _NibbleToAscii
+	C:0314H            PUBLIC             _ByteToAscii
+	D:0025H            PUBLIC             hexa
+	D:0021H            PUBLIC             ascii
+	C:02FDH            PUBLIC             _GetInputRegisterValue
+	C:0287H            PUBLIC             _SetHoldingRegisterValue
+	C:0270H            PUBLIC             _GetHoldingRegisterValue
+	C:02BEH            PUBLIC             _GetInputValue
+	C:01E7H            PUBLIC             _SetCoilValue
+	C:01A8H            PUBLIC             _GetCoilValue
+	I:0044H            PUBLIC             inputs_registers_array
+	I:0040H            PUBLIC             holding_registers_array
+	I:003FH            PUBLIC             inputs_array
+	I:003EH            PUBLIC             coils_array
+	C:0B18H            PUBLIC             _delay_ms
+	B:00B2H            SYMBOL             RS485En
+	B:00C8H            SYMBOL             CP_RL2
+	B:00C9H            SYMBOL             C_T2
+	B:00CAH            SYMBOL             TR2
+	B:00CBH            SYMBOL             EXEN2
+	B:00CCH            SYMBOL             TCLK
+	B:00CDH            SYMBOL             RCLK
+	B:00CEH            SYMBOL             EXF2
+	B:00CFH            SYMBOL             TF2
+	B:0090H            SYMBOL             T2
+	B:0091H            SYMBOL             T2EX
+	B:00BDH            SYMBOL             PT2
+	B:00ADH            SYMBOL             ET2
+	B:0098H            SYMBOL             RI
+	B:0099H            SYMBOL             TI
+	B:009AH            SYMBOL             RB8
+	B:009BH            SYMBOL             TB8
+	B:009CH            SYMBOL             REN
+	B:009DH            SYMBOL             SM2
+	B:009EH            SYMBOL             SM1
+	B:009FH            SYMBOL             SM0
+	B:00B0H            SYMBOL             RXD
+	B:00B1H            SYMBOL             TXD
+	B:00B2H            SYMBOL             INT0
+	B:00B3H            SYMBOL             INT1
+	B:00B4H            SYMBOL             T0
+	B:00B5H            SYMBOL             T1
+	B:00B6H            SYMBOL             WR
+	B:00B7H            SYMBOL             RD
+	B:00B8H            SYMBOL             PX0
+	B:00B9H            SYMBOL             PT0
+	B:00BAH            SYMBOL             PX1
+	B:00BBH            SYMBOL             PT1
+	B:00BCH            SYMBOL             PS
+	B:00A8H            SYMBOL             EX0
+	B:00A9H            SYMBOL             ET0
+	B:00AAH            SYMBOL             EX1
+	B:00ABH            SYMBOL             ET1
+	B:00ACH            SYMBOL             ES
+	B:00AFH            SYMBOL             EA
+	B:0088H            SYMBOL             IT0
+	B:0089H            SYMBOL             IE0
+	B:008AH            SYMBOL             IT1
+	B:008BH            SYMBOL             IE1
+	B:008CH            SYMBOL             TR0
+	B:008DH            SYMBOL             TF0
+	B:008EH            SYMBOL             TR1
+	B:008FH            SYMBOL             TF1
+	B:00D0H            SYMBOL             P
+	B:00D1H            SYMBOL             F1
+	B:00D2H            SYMBOL             OV
+	B:00D3H            SYMBOL             RS0
+	B:00D4H            SYMBOL             RS1
+	B:00D5H            SYMBOL             F0
+	B:00D6H            SYMBOL             AC
+	B:00D7H            SYMBOL             CY
+	D:00CDH            SYMBOL             TH2
+	D:00CCH            SYMBOL             TL2
+	D:00CBH            SYMBOL             RCAP2H
+	D:00CAH            SYMBOL             RCAP2L
+	D:00C8H            SYMBOL             T2CON
+	D:0099H            SYMBOL             SBUF
+	D:0098H            SYMBOL             SCON
+	D:00B8H            SYMBOL             IP
+	D:00A8H            SYMBOL             IE
+	D:008DH            SYMBOL             TH1
+	D:008CH            SYMBOL             TH0
+	D:008BH            SYMBOL             TL1
+	D:008AH            SYMBOL             TL0
+	D:0089H            SYMBOL             TMOD
+	D:0088H            SYMBOL             TCON
+	D:0087H            SYMBOL             PCON
+	D:0083H            SYMBOL             DPH
+	D:0082H            SYMBOL             DPL
+	D:0081H            SYMBOL             SP
+	D:00F0H            SYMBOL             B
+	D:00E0H            SYMBOL             ACC
+	D:00D0H            SYMBOL             PSW
+	D:00B0H            SYMBOL             P3
+	D:00A0H            SYMBOL             P2
+	D:0090H            SYMBOL             P1
+	D:0080H            SYMBOL             P0
+	D:0081H            SYMBOL             __SP__
+	-------            PROC               _GetCoilValue
+	D:0002H            SYMBOL             i
+	D:0018H            SYMBOL             d
+	C:01A8H            LINE#              31
+	C:01A8H            LINE#              31
+	C:01A8H            LINE#              33
+	C:01ABH            LINE#              34
+	C:01B3H            LINE#              36
+	C:01B5H            LINE#              42
+	C:01B6H            LINE#              38
+	C:01C8H            LINE#              39
+	C:01CBH            LINE#              40
+	C:01DDH            LINE#              41
+	C:01E6H            LINE#              42
+	C:01E6H            LINE#              42
+	-------            ENDPROC            _GetCoilValue
+	-------            PROC               _SetCoilValue
+	D:001AH            SYMBOL             adr
+	C:01E7H            LINE#              44
+	C:01E7H            LINE#              44
+	C:01EBH            LINE#              47
+	C:01F7H            LINE#              73
+	C:01F8H            LINE#              51
+	C:0209H            LINE#              52
+	C:020EH            LINE#              53
+	C:021FH            LINE#              54
+	C:0225H            LINE#              56
+	C:0229H            LINE#              60
+	C:022BH            LINE#              62
+	C:0232H            LINE#              73
+	C:0233H            LINE#              63
+	C:0239H            LINE#              73
+	C:023AH            LINE#              64
+	C:0241H            LINE#              66
+	C:0254H            LINE#              68
+	C:025BH            LINE#              70
+	C:026FH            LINE#              73
+	C:026FH            LINE#              73
+	-------            ENDPROC            _SetCoilValue
+	-------            PROC               _GetHoldingRegisterValue
+	C:0270H            LINE#              76
+	C:0270H            LINE#              76
+	C:0270H            LINE#              78
+	C:0278H            LINE#              80
+	C:027BH            LINE#              86
+	C:027CH            LINE#              84
+	C:0286H            LINE#              86
+	C:0286H            LINE#              86
+	-------            ENDPROC            _GetHoldingRegisterValue
+	-------            PROC               _SetHoldingRegisterValue
+	D:0012H            SYMBOL             adr
+	D:0014H            SYMBOL             value
+	C:0287H            LINE#              88
+	C:0287H            LINE#              88
+	C:028FH            LINE#              90
+	C:02B0H            LINE#              98
+	C:02B1H            LINE#              96
+	C:02BDH            LINE#              98
+	C:02BDH            LINE#              98
+	-------            ENDPROC            _SetHoldingRegisterValue
+	-------            PROC               _GetInputValue
+	D:0002H            SYMBOL             i
+	D:0018H            SYMBOL             d
+	C:02BEH            LINE#              101
+	C:02BEH            LINE#              101
+	C:02BEH            LINE#              103
+	C:02C1H            LINE#              104
+	C:02C9H            LINE#              106
+	C:02CBH            LINE#              112
+	C:02CCH            LINE#              108
+	C:02DEH            LINE#              109
+	C:02E1H            LINE#              110
+	C:02F3H            LINE#              111
+	C:02FCH            LINE#              112
+	C:02FCH            LINE#              112
+	-------            ENDPROC            _GetInputValue
+	-------            PROC               _GetInputRegisterValue
+	C:02FDH            LINE#              114
+	C:02FDH            LINE#              114
+	C:02FDH            LINE#              116
+	C:0305H            LINE#              118
+	C:0308H            LINE#              124
+	C:0309H            LINE#              122
+	C:0313H            LINE#              124
+	C:0313H            LINE#              124
+	-------            ENDPROC            _GetInputRegisterValue
+	-------            PROC               _ByteToAscii
+	C:0314H            LINE#              18
+	C:0314H            LINE#              18
+	C:0314H            LINE#              20
+	C:031AH            LINE#              21
+	C:031EH            LINE#              22
+	C:0324H            LINE#              24
+	C:032BH            LINE#              28
+	C:0330H            LINE#              30
+	C:0337H            LINE#              32
+	C:033DH            LINE#              36
+	C:0342H            LINE#              39
+	C:0342H            LINE#              39
+	-------            ENDPROC            _ByteToAscii
+	-------            PROC               _NibbleToAscii
+	C:000EH            LINE#              41
+	C:000EH            LINE#              41
+	C:000EH            LINE#              43
+	C:0014H            LINE#              45
+	C:0018H            LINE#              51
+	C:0019H            LINE#              49
+	C:001DH            LINE#              51
+	C:001DH            LINE#              51
+	-------            ENDPROC            _NibbleToAscii
+	-------            PROC               _AsciiToByte
+	C:0343H            LINE#              53
+	C:0343H            LINE#              53
+	C:0343H            LINE#              55
+	C:0348H            LINE#              57
+	C:034EH            LINE#              61
+	C:0352H            LINE#              63
+	C:0358H            LINE#              65
+	C:035EH            LINE#              69
+	C:0362H            LINE#              71
+	C:0369H            LINE#              72
+	C:0369H            LINE#              72
+	-------            ENDPROC            _AsciiToByte
+	-------            PROC               _TwoByteToAscii
+	C:036AH            LINE#              74
+	C:036AH            LINE#              74
+	C:036AH            LINE#              77
+	C:0373H            LINE#              79
+	C:0376H            LINE#              80
+	C:037FH            LINE#              82
+	C:0389H            LINE#              83
+	C:039AH            LINE#              84
+	C:03A1H            LINE#              86
+	C:03A3H            LINE#              87
+	C:03B2H            LINE#              86
+	C:03B6H            LINE#              89
+	C:03B6H            LINE#              89
+	-------            ENDPROC            _TwoByteToAscii
+	-------            PROC               AsciiToTwoByte
+	D:0002H            SYMBOL             a
+	D:001CH            SYMBOL             b
+	D:001EH            SYMBOL             result
+	C:03B7H            LINE#              91
+	C:03B7H            LINE#              91
+	C:03B7H            LINE#              93
+	C:03C0H            LINE#              94
+	C:03CCH            LINE#              95
+	C:03D6H            LINE#              96
+	C:03DAH            LINE#              97
+	C:03DAH            LINE#              97
+	-------            ENDPROC            AsciiToTwoByte
+	-------            PROC               execute_modbus_command
+	D:0009H            SYMBOL             is_me
+	D:000AH            SYMBOL             fun
+	D:000BH            SYMBOL             lrc
+	C:03DBH            LINE#              33
+	C:03DBH            LINE#              33
+	C:03DBH            LINE#              35
+	C:03E4H            LINE#              36
+	C:03EBH            LINE#              38
+	C:03EEH            LINE#              41
+	C:03F4H            LINE#              42
+	C:0405H            LINE#              43
+	C:0409H            LINE#              44
+	C:040CH            LINE#              45
+	C:040DH            LINE#              44
+	C:040FH            LINE#              45
+	C:0413H            LINE#              47
+	C:0416H            LINE#              52
+	C:0421H            LINE#              53
+	C:0422H            LINE#              52
+	C:0424H            LINE#              53
+	C:0426H            LINE#              55
+	C:042AH            LINE#              59
+	C:042CH            LINE#              60
+	C:0432H            LINE#              62
+	C:0435H            LINE#              67
+	C:0442H            LINE#              68
+	C:0468H            LINE#              72
+	C:046BH            LINE#              77
+	C:046EH            LINE#              82
+	C:0471H            LINE#              87
+	C:0474H            LINE#              92
+	C:0477H            LINE#              97
+	C:047AH            LINE#              102
+	C:047DH            LINE#              107
+	C:0480H            LINE#              115
+	C:0480H            LINE#              115
+	-------            ENDPROC            execute_modbus_command
+	-------            PROC               gen_lrc
+	C:0481H            LINE#              117
+	C:0481H            LINE#              117
+	C:0481H            LINE#              119
+	C:0487H            LINE#              120
+	C:0490H            LINE#              121
+	C:0497H            LINE#              123
+	C:049EH            LINE#              124
+	C:04A5H            LINE#              125
+	C:04A5H            LINE#              125
+	-------            ENDPROC            gen_lrc
+	-------            PROC               clear_frame
+	C:04A6H            LINE#              126
+	C:04A6H            LINE#              126
+	C:04A6H            LINE#              129
+	C:04AAH            LINE#              130
+	C:04AEH            LINE#              131
+	C:04B7H            LINE#              135
+	C:04B7H            LINE#              135
+	-------            ENDPROC            clear_frame
+	-------            PROC               tx_assci_frame
+	C:04B8H            LINE#              136
+	C:04B8H            LINE#              136
+	C:04B8H            LINE#              138
+	C:04BBH            LINE#              140
+	C:04BDH            LINE#              141
+	C:04BFH            LINE#              142
+	C:04C2H            LINE#              146
+	C:04C4H            LINE#              147
+	C:04C8H            LINE#              148
+	C:04CAH            LINE#              149
+	C:04CCH            LINE#              150
+	C:04D0H            LINE#              151
+	C:04D0H            LINE#              151
+	-------            ENDPROC            tx_assci_frame
+	-------            PROC               lrc_calc
+	D:0004H            SYMBOL             i
+	C:04D1H            LINE#              152
+	C:04D1H            LINE#              152
+	C:04D1H            LINE#              154
+	C:04D3H            LINE#              155
+	C:04E1H            LINE#              157
+	C:04F5H            LINE#              155
+	C:04FBH            LINE#              159
+	C:04FDH            LINE#              160
+	C:04FFH            LINE#              161
+	C:04FFH            LINE#              161
+	-------            ENDPROC            lrc_calc
+	-------            PROC               ResponseReadCoilsStatus_01
+	D:0002H            SYMBOL             start
+	D:002BH            PUBLIC             cant
+	D:0006H            SYMBOL             i
+	D:0013H            SYMBOL             limit
+	D:0015H            SYMBOL             coils
+	D:000EH            SYMBOL             k
+	D:0016H            SYMBOL             new_data_count
+	C:0500H            LINE#              164
+	C:0500H            LINE#              164
+	C:0500H            LINE#              167
+	C:0505H            LINE#              168
+	C:050BH            LINE#              169
+	C:050FH            LINE#              170
+	C:0510H            LINE#              172
+	C:051AH            LINE#              170
+	C:051EH            LINE#              174
+	C:0525H            LINE#              175
+	C:0527H            LINE#              177
+	C:0531H            LINE#              175
+	C:0535H            LINE#              179
+	C:053CH            LINE#              180
+	C:0547H            LINE#              183
+	C:0559H            LINE#              185
+	C:055CH            LINE#              186
+	C:055EH            LINE#              187
+	D:0017H            SYMBOL             val
+	C:0576H            LINE#              189
+	C:0584H            LINE#              190
+	C:0587H            LINE#              192
+	C:0594H            LINE#              194
+	C:0598H            LINE#              196
+	C:059DH            LINE#              197
+	C:05A6H            LINE#              198
+	C:05ADH            LINE#              199
+	C:05AFH            LINE#              183
+	C:05BCH            LINE#              202
+	C:05C1H            LINE#              203
+	C:05C5H            LINE#              204
+	C:05C9H            LINE#              206
+	C:05CCH            LINE#              208
+	C:05CCH            LINE#              210
+	-------            ENDPROC            ResponseReadCoilsStatus_01
+	-------            PROC               ResponseReadInputStatus_02
+	D:0002H            SYMBOL             start
+	D:002BH            PUBLIC             cant
+	D:0006H            SYMBOL             i
+	D:0013H            SYMBOL             limit
+	D:0015H            SYMBOL             inputs
+	D:000EH            SYMBOL             k
+	D:0016H            SYMBOL             new_data_count
+	C:05CFH            LINE#              211
+	C:05CFH            LINE#              211
+	C:05CFH            LINE#              214
+	C:05D4H            LINE#              215
+	C:05DAH            LINE#              216
+	C:05DEH            LINE#              217
+	C:05DFH            LINE#              219
+	C:05E9H            LINE#              217
+	C:05EDH            LINE#              221
+	C:05F4H            LINE#              222
+	C:05F6H            LINE#              224
+	C:0600H            LINE#              222
+	C:0604H            LINE#              227
+	C:060BH            LINE#              228
+	C:0616H            LINE#              231
+	C:0628H            LINE#              233
+	C:062BH            LINE#              234
+	C:062DH            LINE#              235
+	D:0017H            SYMBOL             val
+	C:0645H            LINE#              237
+	C:0653H            LINE#              238
+	C:0656H            LINE#              240
+	C:0663H            LINE#              242
+	C:0667H            LINE#              244
+	C:066CH            LINE#              245
+	C:0675H            LINE#              246
+	C:067CH            LINE#              248
+	C:067EH            LINE#              231
+	C:068BH            LINE#              251
+	C:0690H            LINE#              252
+	C:0694H            LINE#              253
+	C:0698H            LINE#              255
+	C:069BH            LINE#              257
+	C:069BH            LINE#              259
+	-------            ENDPROC            ResponseReadInputStatus_02
+	-------            PROC               ResponseReadHoldingRegisters_03
+	D:0002H            SYMBOL             start
+	D:002BH            PUBLIC             cant
+	D:0006H            SYMBOL             i
+	D:000CH            SYMBOL             limit
+	D:000EH            SYMBOL             status
+	D:0010H            SYMBOL             new_data_count
+	C:069EH            LINE#              260
+	C:069EH            LINE#              260
+	C:069EH            LINE#              263
+	C:06A7H            LINE#              264
+	C:06A9H            LINE#              265
+	C:06ADH            LINE#              266
+	C:06AEH            LINE#              268
+	C:06B8H            LINE#              266
+	C:06BCH            LINE#              270
+	C:06C3H            LINE#              271
+	C:06C5H            LINE#              273
+	C:06CFH            LINE#              271
+	C:06D3H            LINE#              275
+	C:06DAH            LINE#              276
+	C:06E5H            LINE#              279
+	C:06F7H            LINE#              281
+	C:0702H            LINE#              282
+	C:0709H            LINE#              284
+	C:0712H            LINE#              285
+	C:0719H            LINE#              286
+	C:0720H            LINE#              287
+	C:0727H            LINE#              289
+	C:072BH            LINE#              279
+	C:0735H            LINE#              292
+	C:073AH            LINE#              293
+	C:073EH            LINE#              294
+	C:0742H            LINE#              296
+	C:0745H            LINE#              298
+	C:0745H            LINE#              300
+	-------            ENDPROC            ResponseReadHoldingRegisters_03
+	-------            PROC               ResponseReadInputRegisters_04
+	D:0002H            SYMBOL             start
+	D:002BH            PUBLIC             cant
+	D:0006H            SYMBOL             i
+	D:000CH            SYMBOL             limit
+	D:000EH            SYMBOL             status
+	D:0010H            SYMBOL             new_data_count
+	C:0748H            LINE#              301
+	C:0748H            LINE#              301
+	C:0748H            LINE#              304
+	C:0751H            LINE#              305
+	C:0753H            LINE#              306
+	C:0757H            LINE#              307
+	C:0758H            LINE#              309
+	C:0762H            LINE#              307
+	C:0766H            LINE#              311
+	C:076DH            LINE#              312
+	C:076FH            LINE#              314
+	C:0779H            LINE#              312
+	C:077DH            LINE#              317
+	C:0784H            LINE#              318
+	C:078FH            LINE#              321
+	C:07A1H            LINE#              323
+	C:07ACH            LINE#              325
+	C:07B3H            LINE#              326
+	C:07BCH            LINE#              327
+	C:07C3H            LINE#              328
+	C:07CAH            LINE#              329
+	C:07D1H            LINE#              331
+	C:07D5H            LINE#              321
+	C:07DFH            LINE#              334
+	C:07E4H            LINE#              335
+	C:07E8H            LINE#              336
+	C:07ECH            LINE#              338
+	C:07EFH            LINE#              340
+	C:07EFH            LINE#              342
+	-------            ENDPROC            ResponseReadInputRegisters_04
+	-------            PROC               ResponseForceSingleCoil_05
+	D:000EH            SYMBOL             coilID
+	D:0010H            SYMBOL             value
+	D:000CH            SYMBOL             i
+	C:07F2H            LINE#              343
+	C:07F2H            LINE#              343
+	C:07F2H            LINE#              345
+	C:07F7H            LINE#              346
+	C:07FBH            LINE#              347
+	C:07FFH            LINE#              348
+	C:0803H            LINE#              350
+	C:080FH            LINE#              348
+	C:0816H            LINE#              352
+	C:081DH            LINE#              353
+	C:0822H            LINE#              355
+	C:082EH            LINE#              353
+	C:0835H            LINE#              357
+	C:083CH            LINE#              358
+	C:0856H            LINE#              360
+	C:086FH            LINE#              364
+	C:0872H            LINE#              368
+	C:0875H            LINE#              370
+	C:0875H            LINE#              372
+	-------            ENDPROC            ResponseForceSingleCoil_05
+	-------            PROC               ResponsePresetSingleRegister_06
+	D:0002H            SYMBOL             registerID
+	D:0004H            SYMBOL             value
+	D:0006H            SYMBOL             i
+	C:0878H            LINE#              374
+	C:0878H            LINE#              374
+	C:0878H            LINE#              379
+	C:087DH            LINE#              381
+	C:0889H            LINE#              379
+	C:0890H            LINE#              383
+	C:0897H            LINE#              384
+	C:0899H            LINE#              386
+	C:08A3H            LINE#              384
+	C:08A7H            LINE#              388
+	C:08AEH            LINE#              389
+	C:08B9H            LINE#              391
+	C:08BCH            LINE#              393
+	C:08BCH            LINE#              395
+	-------            ENDPROC            ResponsePresetSingleRegister_06
+	-------            PROC               ResponseForceMultipleCoils_15
+	D:0002H            SYMBOL             start
+	D:002BH            PUBLIC             cant
+	D:0006H            SYMBOL             i
+	D:000CH            SYMBOL             limit
+	D:000EH            SYMBOL             coils
+	D:000FH            SYMBOL             k
+	D:0010H            SYMBOL             new_data_count
+	D:0011H            SYMBOL             tempAdr
+	D:0012H            SYMBOL             index
+	D:0013H            SYMBOL             offset
+	I:0091H            SYMBOL             parameters
+	I:0090H            SYMBOL             byte_count
+	C:08BFH            LINE#              397
+	C:08BFH            LINE#              397
+	C:08BFH            LINE#              400
+	C:08C4H            LINE#              401
+	C:08CCH            LINE#              402
+	C:08D0H            LINE#              405
+	C:08D4H            LINE#              407
+	C:08E0H            LINE#              405
+	C:08E7H            LINE#              409
+	C:08EEH            LINE#              410
+	C:08F0H            LINE#              412
+	C:08FAH            LINE#              410
+	C:08FEH            LINE#              414
+	C:0905H            LINE#              415
+	C:0910H            LINE#              417
+	C:091DH            LINE#              418
+	C:0921H            LINE#              421
+	C:0925H            LINE#              422
+	C:0936H            LINE#              424
+	C:0949H            LINE#              425
+	C:094DH            LINE#              426
+	C:095BH            LINE#              422
+	C:0965H            LINE#              430
+	C:0977H            LINE#              432
+	C:097EH            LINE#              433
+	C:0986H            LINE#              434
+	C:098CH            LINE#              435
+	C:09A4H            LINE#              436
+	C:09B6H            LINE#              430
+	C:09C0H            LINE#              439
+	C:09C4H            LINE#              441
+	C:09C7H            LINE#              443
+	C:09C7H            LINE#              445
+	-------            ENDPROC            ResponseForceMultipleCoils_15
+	-------            PROC               ResponsePresetMultipleRegisters_16
+	D:0002H            SYMBOL             start
+	D:002BH            PUBLIC             cant
+	D:0006H            SYMBOL             i
+	D:000CH            SYMBOL             limit
+	D:000EH            SYMBOL             reg_value
+	D:0010H            SYMBOL             j
+	I:0090H            SYMBOL             byte_count
+	C:09CAH            LINE#              447
+	C:09CAH            LINE#              447
+	C:09CAH            LINE#              450
+	C:09D3H            LINE#              451
+	C:09D5H            LINE#              453
+	C:09D9H            LINE#              455
+	C:09E5H            LINE#              453
+	C:09ECH            LINE#              457
+	C:09F3H            LINE#              458
+	C:09F5H            LINE#              460
+	C:09FFH            LINE#              458
+	C:0A03H            LINE#              462
+	C:0A0AH            LINE#              465
+	C:0A19H            LINE#              466
+	C:0A1DH            LINE#              469
+	C:0A25H            LINE#              470
+	C:0A3AH            LINE#              472
+	C:0A3DH            LINE#              474
+	C:0A4DH            LINE#              472
+	C:0A5CH            LINE#              476
+	C:0A63H            LINE#              477
+	C:0A78H            LINE#              470
+	C:0A82H            LINE#              480
+	C:0A86H            LINE#              482
+	C:0A89H            LINE#              484
+	C:0A89H            LINE#              486
+	-------            ENDPROC            ResponsePresetMultipleRegisters_16
+	-------            PROC               Serial_PWM_Init
+	C:0A8CH            LINE#              23
+	C:0A8CH            LINE#              23
+	C:0A8CH            LINE#              25
+	C:0A8EH            LINE#              27
+	C:0A91H            LINE#              29
+	C:0A94H            LINE#              30
+	C:0A97H            LINE#              32
+	C:0A9AH            LINE#              33
+	C:0A9DH            LINE#              35
+	C:0AA7H            LINE#              36
+	C:0AADH            LINE#              38
+	C:0AAFH            LINE#              39
+	C:0AB1H            LINE#              41
+	C:0AB4H            LINE#              43
+	C:0AB6H            LINE#              44
+	C:0AB8H            LINE#              45
+	C:0ABAH            LINE#              47
+	C:0ABCH            LINE#              48
+	C:0ABCH            LINE#              48
+	-------            ENDPROC            Serial_PWM_Init
+	-------            PROC               make_hash
+	D:0038H            SYMBOL             i
+	D:0036H            SYMBOL             h
+	C:0ABDH            LINE#              50
+	C:0ABDH            LINE#              50
+	C:0ABDH            LINE#              52
+	C:0AC2H            LINE#              53
+	C:0AD8H            LINE#              54
+	C:0AF7H            LINE#              53
+	C:0B01H            LINE#              56
+	C:0B17H            LINE#              57
+	C:0B17H            LINE#              57
+	-------            ENDPROC            make_hash
+	-------            PROC               _delay_ms
+	D:0004H            SYMBOL             k
+	D:003AH            SYMBOL             s
+	C:0B18H            LINE#              59
+	C:0B18H            LINE#              59
+	C:0B18H            LINE#              62
+	C:0B1DH            LINE#              63
+	C:0B2DH            LINE#              65
+	C:0B35H            LINE#              63
+	C:0B3FH            LINE#              67
+	C:0B3FH            LINE#              67
+	-------            ENDPROC            _delay_ms
+	-------            PROC               PWM
+	C:0B40H            LINE#              69
+	C:0B54H            LINE#              69
+	C:0B54H            LINE#              72
+	C:0B5EH            LINE#              74
+	C:0B61H            LINE#              75
+	C:0B64H            LINE#              77
+	C:0B73H            LINE#              79
+	C:0B77H            LINE#              83
+	C:0B82H            LINE#              86
+	C:0B95H            LINE#              88
+	C:0BA1H            LINE#              91
+	C:0BA9H            LINE#              93
+	C:0BB1H            LINE#              94
+	C:0BBBH            LINE#              96
+	C:0BC0H            LINE#              97
+	C:0BC2H            LINE#              109
+	C:0BC4H            LINE#              110
+	C:0BDAH            LINE#              111
+	C:0BDAH            LINE#              111
+	-------            ENDPROC            PWM
+	-------            PROC               SerialPortInt
+	D:0008H            SYMBOL             rx
+	C:0BDBH            LINE#              113
+	C:0BF5H            LINE#              113
+	C:0BF5H            LINE#              115
+	C:0BF8H            LINE#              117
+	C:0BFBH            LINE#              119
+	C:0BFDH            LINE#              120
+	C:0C00H            LINE#              177
+	C:0C1AH            LINE#              179
+	C:0C1BH            LINE#              125
+	C:0C27H            LINE#              127
+	C:0C29H            LINE#              128
+	C:0C2FH            LINE#              129
+	C:0C32H            LINE#              133
+	C:0C34H            LINE#              134
+	C:0C39H            LINE#              139
+	C:0C3CH            LINE#              142
+	C:0C44H            LINE#              144
+	C:0C47H            LINE#              145
+	C:0C49H            LINE#              146
+	C:0C4FH            LINE#              148
+	C:0C54H            LINE#              150
+	C:0C59H            LINE#              152
+	C:0C62H            LINE#              157
+	C:0C6DH            LINE#              159
+	C:0C74H            LINE#              161
+	C:0C82H            LINE#              163
+	C:0C85H            LINE#              165
+	C:0C88H            LINE#              167
+	C:0C8BH            LINE#              170
+	C:0C90H            LINE#              172
+	C:0C96H            LINE#              177
+	C:0C98H            LINE#              179
+	-------            ENDPROC            SerialPortInt
+	-------            PROC               update_display
+	D:003AH            SYMBOL             x
+	D:003CH            SYMBOL             L
+	C:0C9BH            LINE#              181
+	C:0C9BH            LINE#              181
+	C:0C9BH            LINE#              183
+	C:0CA5H            LINE#              184
+	C:0CB0H            LINE#              186
+	C:0CC2H            LINE#              188
+	C:0CC9H            LINE#              189
+	C:0CCDH            LINE#              193
+	C:0CDBH            LINE#              195
+	C:0CEAH            LINE#              196
+	C:0CF1H            LINE#              197
+	C:0CF3H            LINE#              201
+	C:0D05H            LINE#              202
+	C:0D0BH            LINE#              203
+	C:0D0BH            LINE#              203
+	-------            ENDPROC            update_display
+	-------            PROC               main
+	C:0D0CH            LINE#              205
+	C:0D0CH            LINE#              205
+	C:0D0CH            LINE#              207
+	C:0D0FH            LINE#              209
+	C:0D17H            LINE#              210
+	C:0D1EH            LINE#              212
+	C:0D20H            LINE#              213
+	C:0D22H            LINE#              214
+	C:0D24H            LINE#              215
+	C:0D27H            LINE#              217
+	C:0D2AH            LINE#              219
+	C:0D2CH            LINE#              223
+	C:0D2FH            LINE#              224
+	C:0D36H            LINE#              226
+	-------            ENDPROC            main
+	-------            ENDMOD             main
+	C:0142H            PUBLIC             ?C_START1
+	C:0026H            PUBLIC             ?C_IMULX
+	C:002BH            PUBLIC             ?C_IMUL
+	C:003FH            PUBLIC             ?C_SIDIV
+	C:0067H            PUBLIC             ?C_UIDIV
+	C:00ECH            PUBLIC             CPL_R4R5
+	C:00F4H            PUBLIC             CPL_R6R7
+	C:009FH            PUBLIC             DIV_2
+	C:00FCH            PUBLIC             ?C_CMPLS
+	C:010BH            PUBLIC             ?C_CMPL
+	C:0133H            PUBLIC             RST_STK4?C
+	D:00A0H            PUBLIC             HPD_ADDR
+	C:0D38H            PUBLIC             ?C_INITSEGSTART
+	N:007FH            PUBLIC             IDATALEN
+	N:00FFH            PUBLIC             _INITP2?
+
+UNCALLED SEGMENTS:
+------------------
+    ?PR?make_hash?MAIN: Function make_hash in file F:\REINIER\ESTUDIO\TESIS\PROTEUS\CAP03\C_CODE_&
+SLAVE\MAIN.OBJ was not called
+
+----------------------
+SUGGESTED OPTIMIZATION
+----------------------
+Warning: 67 (43H) data bytes in the range [00H-80H] are available for storage.
+         Consider using some of these for 'data' variables in your source files.
+
+
+LINK/LOCATE RUN COMPLETE,  NO ERROR FOUND.
+
